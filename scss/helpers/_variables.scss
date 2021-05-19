@@ -1,0 +1,32 @@
+/* color palette */
+/* color variables */
+$color-basic-light: #ffffff;
+$color-basic-medium: #c7cad0;
+$color-basic-dark: #43444b;
+$color-primary-light: #c8fff3;
+$color-primary-dark: #2c9c97;
+$color-secondary-light: #e09ebc;
+$color-secondary-dark: #a46280;
+
+/* color maps */
+/* background */
+$color-bg: (
+    bg: $color-basic-dark,
+    content: $color-basic-light,
+    header-title: $color-basic-dark,
+    header-nav: $color-primary-light,
+    main: $color-basic-light,
+    footer: $color-primary-light,
+);
+
+/* text */
+$color-txt:(
+    bg: $color-basic-dark,
+    header-title: $color-basic-light,
+    header-nav: $color-basic-dark,
+    main: $color-basic-dark,
+    footer: $color-basic-dark,
+);
+
+
+

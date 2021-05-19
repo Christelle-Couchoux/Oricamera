@@ -1,0 +1,37 @@
+{
+  "name": "orinoco",
+  "version": "1.0.0",
+  "description": "OC Web Dev P5",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./scss/main.scss:./css/style.css",
+    "prefix": "postcss --watch ./css/style.css --use autoprefixer -d ./css/prefixed/",
+    "build": "webpack",
+    "start": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Christelle-Couchoux/Orinoco.git"
+  },
+  "author": "Christelle Couchoux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Christelle-Couchoux/Orinoco/issues"
+  },
+  "homepage": "https://github.com/Christelle-Couchoux/Orinoco#readme",
+  "browserslist": "last 4 versions",
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.0.1",
+    "core-js": "^3.12.1"
+  }
+}

@@ -1,0 +1,33 @@
+footer{
+    @include color-bg-txt(footer);
+    @include links-style(map-get($color-txt, footer));
+
+    p{
+        margin: 0;
+        padding: 20px 0 20px 0;
+    }
+
+    ul{
+        @include list-style;
+        margin: 20px;
+        text-align: center;
+        @include flexbox(column, nowrap, space-around, center);
+
+        @include md{
+            @include flexbox(row, nowrap, space-around, center)
+        };
+
+        i{
+            font-size: 1.3rem;
+            padding: 10px;
+
+            &:hover{
+                transform: scale(1.5);
+                color: $color-primary-dark;
+            }
+        }
+    }
+
+    margin: 0;
+    padding: 20px 0 20px 0;
+}
