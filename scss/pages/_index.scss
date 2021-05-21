@@ -1,5 +1,73 @@
+main{
+    @include color-bg-txt(main);
+    padding: 0 20px 0 20px;
 
+    @include md{
+        padding: 0 30px 0 30px;
+    }
+}
 
+#products{
+    margin: auto;
+    text-align: center;
+}
 
+#items{
+    @include flexbox(column, nowrap, space-around, center);
+
+    margin: auto;
+    padding: 0 0 20px 0;
+
+    @include md{
+        @include flexbox(row, wrap, space-between, flex-start);
+    }
+}
+
+.item{
+    @include links-style(map-get($color-txt, btn));
+    @include flexbox(column, nowrap, space-between, center);
+    border-top: solid 1px $color-primary-dark;
+    margin: 0 0 20px 0;
+    max-width: 1000px;
+
+    @include md{
+        width: 47%;
+    }
+
+    &__name{
+        padding: 20px;
+    }
+
+    &__image{
+        width: 100%;
+
+        img{
+            @include size(100%, auto);    
+        }
+    }
+
+    &__btn{
+        font-size: 0.8rem;
+        display: block;
+        @include size(50%, auto);
+        padding: 2px;
+        margin: 5px 0 0 0;
+        @include color-bg-txt(btn);
+        @include font-familiy-size(btn-seemodel);
+        text-align: center;
+        text-transform: uppercase;
+        border: solid 1px $color-basic-dark;
+
+        &:hover{
+            border: solid 2px $color-secondary;
+            padding: 1px;
+            a{
+                color: $color-secondary;
+                font-family: $montserratbold;
+            }
+        }
+    }
+
+}
 
 

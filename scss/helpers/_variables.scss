@@ -1,12 +1,12 @@
 /* color palette */
 /* color variables */
 $color-basic-light: #ffffff;
-$color-basic-medium: #c7cad0;
+$color-basic-medium: #c7cad0; /* not used yet */
 $color-basic-dark: #43444b;
 $color-primary-light: #c8fff3;
 $color-primary-dark: #2c9c97;
-$color-secondary-light: #e09ebc;
-$color-secondary-dark: #a46280;
+$color-secondary: #a26b00;
+$color-tertiary: #bf0080;/* not used yet */
 
 /* color maps */
 /* background */
@@ -17,6 +17,7 @@ $color-bg: (
     header-nav: $color-primary-light,
     main: $color-basic-light,
     footer: $color-primary-light,
+    btn: $color-basic-light,
 );
 
 /* text */
@@ -26,7 +27,53 @@ $color-txt:(
     header-nav: $color-basic-dark,
     main: $color-basic-dark,
     footer: $color-basic-dark,
+    btn: $color-basic-dark,
+    divider: $color-secondary,
 );
 
+
+/* fonts */
+/* font family variables */
+/* montserrat */
+$montserratregular: ('montserratregular', 'arial', 'sans-serif');
+$montserratbold: ('montserratbold', 'arial', 'sans-serif');
+$montserratlight: ('montserratlight', 'arial', 'sans-serif');
+
+/* lato */
+$latoregular: ('latoregular', 'arial', 'sans-serif');
+$latobold: ('latobold', 'arial', 'sans-serif');
+$latolight: ('latolight', 'arial', 'sans-serif');
+$latoitalic: ('latoitalic', 'arial', 'sans-serif');
+$latobold_italic: ('latobold_italic', 'arial', 'sans-serif');
+$latolight_italic: ('latolight_italic', 'arial', 'sans-serif');
+
+
+/* font family map */
+$font-family:(
+    h1: $montserratregular,
+    h2: $montserratregular,
+    h3: $latoitalic,
+    h4: $latobold,
+    header-p: $latolight,
+    header-nav: $montserratregular,
+    footer-p1:$latobold,
+    footer-p2:$latoregular,
+    btn-seemodel: $montserratregular,
+
+);
+
+/* font size map */
+$font-size:(
+    h1: 2.5rem,    
+    h2: 1.5rem,
+    h3: 1.2rem,
+    h4: 1.2rem,
+    header-p: 1rem,
+    header-nav: 1rem,
+    footer-p1:1.1rem,
+    footer-p2:0.95rem,
+    btn-seemodel: 0.8rem,
+
+);
 
 

@@ -2,10 +2,6 @@
 @import "./helpers/variables";
 @import "./helpers/mixins";
 
-
-/* vendors */
-@import "../node_modules/bootstrap/scss/bootstrap";
-
 /* base */
 @import "./base/base";
 @import "./base/typography";

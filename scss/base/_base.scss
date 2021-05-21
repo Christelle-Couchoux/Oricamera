@@ -8,27 +8,12 @@
 body{ /* define minimum/maximum width */
     min-width: 375px;
     max-width: 1920px;
-    margin: auto;
-
-    .container-fluid{
-        padding: 0; /* remove Bootstrap padding */
-    }   
-}
-
-div .col{
-    padding: 0;
-    width: 100%;
+    margin: auto; 
 }
 
 i{
     display: inline-block;
 }
-
-/* links style */
-main{
-    @include links-style; /* color by default is color for main txt so no need to specify here */
-}
-
 
 /* dark grey background */
 #bg{
@@ -41,14 +26,6 @@ main{
     margin: auto;
     
     @include md{
-        margin: 0 50px;
-    }
-
-    @include lg{
-        margin: 0 100px;
-    }
-
-    @include xl{
-        margin: 0 150px;
+        width: 80%;
     }
 }

@@ -1,16 +1,26 @@
 footer{
-    @include color-bg-txt(footer);
     @include links-style(map-get($color-txt, footer));
+    @include color-bg-txt(footer);
+    @include size(100%, auto);
+    padding: 20px 20px 20px 20px;
 
-    p{
-        margin: 0;
-        padding: 20px 0 20px 0;
+    p:first-child{
+        @include font-familiy-size(footer-p1);
+        padding: 10px 0 5px 0;
+        text-align: center;
+    }
+
+    p:nth-child(2){
+        @include font-familiy-size(footer-p2);
+        padding: 0 0 20px 0;
+        text-align: center;
     }
 
     ul{
         @include list-style;
-        margin: 20px;
+        margin:auto;
         text-align: center;
+        max-width: 1000px;
         @include flexbox(column, nowrap, space-around, center);
 
         @include md{
@@ -18,16 +28,14 @@ footer{
         };
 
         i{
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             padding: 10px;
 
+            /* CHANGE TO TRANSITION */
             &:hover{
                 transform: scale(1.5);
                 color: $color-primary-dark;
             }
         }
     }
-
-    margin: 0;
-    padding: 20px 0 20px 0;
 }
