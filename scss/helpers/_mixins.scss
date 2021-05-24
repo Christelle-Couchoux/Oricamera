@@ -46,7 +46,7 @@
 }
 
 /* font family and size */
-@mixin font-familiy-size($element){ /* ex: @include font-family-size (h1) */
+@mixin font-family-size($element){ /* ex: @include font-family-size (h1) */
     font-family: map-get($map: $font-family, $key: $element);
     font-size: map-get($map: $font-size, $key: $element);
 }

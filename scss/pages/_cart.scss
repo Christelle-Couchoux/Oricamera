@@ -1,4 +1,209 @@
 #cart{
     margin: auto;
     text-align: center;
+    max-width: 1000px;
+
+
+    h3{
+        border-bottom: solid 1px $color-primary-dark;
+    
+    }
+}
+
+#table{
+    margin: auto;
+    @include size(100%, auto);
+
+    @include sm{
+        @include size(87%, auto);
+    }
+
+    padding: 30px 0 0 0;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    border: solid 2px $color-basic-dark;
+    border-spacing: 0;
+    text-align: center;
+
+    th{
+        border: 1px solid $color-basic-dark;
+        @include size(auto, 30px);
+
+        @include sm{
+            @include size(20%, 30px);
+        }
+    }
+
+    td {
+        border: 1px solid $color-basic-dark;
+        @include size(auto, 30px);
+
+        @include sm{
+            @include size(20%, 30px);
+        }
+    }
+
+    thead{
+        @include font-family-size(thead);
+        text-transform: uppercase;
+
+        @include sm{
+            font-size: 1rem;
+        }
+    }
+
+    tbody{
+        @include font-family-size(tbody);
+
+        @include sm{
+            font-size: 1rem;
+        }
+    }
+
+    tfoot{
+        @include font-family-size(tfoot);
+
+        @include sm{
+            font-size: 1rem;
+        }
+        
+        background-color: $color-primary-light;   
+    }
+}
+
+.align-right{
+    text-align: right;
+    padding: 0 20px 0 0;
+}
+
+
+.cart__btn{
+    @include flexbox(row, nowrap, center, center);
+    margin: auto;
+    
+    p{
+        @include size(268px, auto);
+        padding: 15px;
+        margin: auto;
+        text-transform: uppercase;
+        border: none;
+    }
+
+    &--continue{
+        padding: 30px 0 10px 0;
+
+        p{
+            @include color-bg-txt(btn-continue);
+            @include font-family-size(btn-continue);
+            border: solid 2px $color-basic-dark;
+
+            &:hover{
+                cursor: pointer;
+                background-color: $color-secondary;
+                border: solid 2px $color-secondary;
+                text-decoration: underline;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 5px;   
+            }
+        }
+    }
+
+    &--empty{
+        padding: 10px 0 30px 0;
+
+        p{
+            @include color-bg-txt(btn-empty);
+            @include font-family-size(btn-empty);
+            border: solid 2px $color-basic-dark;
+
+            &:hover{
+                cursor: pointer;
+                color: $color-secondary;
+                border: solid 2px $color-secondary;
+                text-decoration: underline;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 5px;   
+            }
+        }
+    }
+
+    &--submit{
+        padding: 20px 0 50px 0;
+
+        p{
+            @include color-bg-txt(btn-submit);
+            @include font-family-size(btn-submit);
+            border: solid 2px $color-primary-light;
+            text-align: center;
+
+            &:hover{
+                cursor: pointer;
+                color: $color-primary-dark;
+                text-decoration: underline;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 5px;   
+            }
+        }
+    }
+}
+
+
+
+#order{
+    margin: auto;
+    padding: 30px 0 0 0;
+    border-top: solid 1px $color-primary-dark;
+    text-align: center;
+    max-width: 1000px;
+
+    .order-p1{
+        @include font-family-size(order-p1)
+    }
+
+    .order-p2{
+        @include font-family-size(order-p2)
+    }
+
+    label{
+        @include font-family-size(order-label)
+    }
+}
+
+#order-form{
+    margin: auto;
+    @include size(87%, auto);
+    text-align: left;
+
+    form{
+        @include size(100%, auto);
+        padding: 20px 0 20px 0;
+    }
+
+    input{
+        @include size(100%, 30px);
+        margin: 3px 0 10px 0;
+        padding: 0 5px 0 5px;
+        @include font-family-size(order-input);  
+        
+        &:focus{
+            background-color: $color-basic-light; 
+        } 
+
+    }
+
+    textarea{
+        @include size(100%, 90px);
+        margin: 3px 0 10px 0;
+        padding: 0 5px 0 5px;
+        @include font-family-size(order-input);  
+
+        &:focus{
+            background-color: $color-basic-light; 
+        }      
+
+    }
+
 }

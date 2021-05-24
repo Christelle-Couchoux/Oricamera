@@ -1,5 +1,6 @@
 main{
     @include color-bg-txt(main);
+    @include links-style(map-get($color-txt, main));
     padding: 0 20px 0 20px;
 
     @include md{
@@ -7,7 +8,7 @@ main{
     }
 }
 
-#products{
+#products-list{
     margin: auto;
     text-align: center;
 }
@@ -47,27 +48,32 @@ main{
     }
 
     &__btn{
-        font-size: 0.8rem;
         display: block;
-        @include size(50%, auto);
-        padding: 2px;
+        @include size(200px, 25px);
+        padding: 1px;
         margin: 5px 0 0 0;
-        @include color-bg-txt(btn);
-        @include font-familiy-size(btn-seemodel);
-        text-align: center;
+        @include color-bg-txt(btn-seemodel);
+        @include font-family-size(btn-seemodel);
+        @include flexbox(row, nowrap, center, center);
         text-transform: uppercase;
         border: solid 1px $color-basic-dark;
 
         &:hover{
             border: solid 2px $color-secondary;
-            padding: 1px;
-            a{
-                color: $color-secondary;
-                font-family: $montserratbold;
-            }
+            padding: 0;
+            color: $color-secondary;
+            font-family: $montserratbold;
         }
     }
 
 }
 
-
+.error{
+    @include size(auto, auto);
+    max-width: 550px;
+    @include color-bg-txt(error);
+    border: solid 3px map-get($map: $color-txt, $key: error);
+    margin: auto;
+    @include flexbox(row, nowrap, center, center);
+    @include font-family-size(error);
+}

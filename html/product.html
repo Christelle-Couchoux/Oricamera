@@ -35,14 +35,15 @@
                 </div>
                 <nav id="header-nav">
                     <ul>
-                        <li><a href="index.html">Produits</a></li>
-                        <li><a href="cart.html">Panier</a></li>
+                        <a href="index.html"><li>Produits</li></a>
+                        <a href="cart.html"><li>Panier</li></a>
                     </ul>
                 </nav>
             </header>
 
             <main>
-                <section id="model">
+                <section id="product">
+
                     <h2>Modèle sélectionné</h2>
                     <p>
                         <svg class="divider" version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -128,6 +129,55 @@ l-264 0 11 -35z"/>
                         </svg>
                     </p>
                     <h3>Personnalisez votre appareil photo!</h3>
+                    
+                    <div id="model">
+
+                        <div class="info">
+                            <!-- product details created with js -->
+                            <h4 class="info__name">Zurss 50S</h4>
+                            <div class="info__image">
+                                <img src="../img/vcam_1.jpg" alt=""/>
+                            </div>
+                            <div class="info__details">
+                                <div class="info__description">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    </p>
+                                </div>
+                                <div class="info__price">
+                                    <p>499.00€</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="form" method="GET" action="cart.html">
+                            <div class="form__lenses">
+                                <label for="lens-selection">Objectif : </label>
+                                <br/>
+                                <select id="lens-selection" name="" required>
+                                    <option value=""> - Choisissez votre objectif - </option>
+                                    <option value="xxx">xxx</option>
+                                    <option value="yyy">yyy</option>
+                                    <!-- options created with js -->
+                                </select>
+                            </div>
+
+                            <div class="form__quantity">
+                                <label for="quantity">Quantité : </label>
+                                <br/>
+                                <input type="number" id="quantity" value="1" min="1" max="10" required>
+                            </div>
+
+                            <div class="form__btn">
+                                <button>
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+
                 </section>
             </main>
 

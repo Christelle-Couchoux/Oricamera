@@ -117,11 +117,11 @@
 /* h1, h2, h3 */
 
 h1{
-    @include font-familiy-size(h1);
+    @include font-family-size(h1);
 }
 
 h2{
-    @include font-familiy-size(h2);
+    @include font-family-size(h2);
     text-transform: uppercase;
     text-align: center;
     padding: 40px 20px 30px 20px;
@@ -139,13 +139,13 @@ h2{
 }
 
 h3{
-    @include font-familiy-size(h3);
+    @include font-family-size(h3);
     padding: 30px 20px 40px 20px;
     text-align: center;
 }
 
 h4{
-    @include font-familiy-size(h4);
+    @include font-family-size(h4);
 }
 
 

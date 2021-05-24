@@ -35,8 +35,8 @@
                 </div>
                 <nav id="header-nav">
                     <ul>
-                        <li><a href="index.html">Produits</a></li>
-                        <li class="active"><a href="cart.html">Panier</a></li>
+                        <a href="index.html"><li>Produits</li></a>
+                        <a href="cart.html"><li class="active">Panier</li></a>
                     </ul>
                 </nav>
             </header>
@@ -127,11 +127,111 @@ l-264 0 11 -35z"/>
 </g>
                         </svg>
                     </p>
-                    <h3>Personnalisez votre appareil photo!</h3>
+                    <h3>Vérifiez et validez votre commande!</h3>
+
+                    <div id="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Objectif</th>
+                                    <th>Prix</th>
+                                    <th>Quantité</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="cart-tablebody">
+                                <!-- created with js -->
+                                <tr>
+                                    <td class="td-name">modèle 1</td>
+                                    <td class="td-lens">50mm</td>
+                                    <td class="td-price">500€</td>
+                                    <td class="td-quantity">1</td>
+                                    <td class="align-right td-total">500€</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-name">modèle 2</td>
+                                    <td class="td-lens">35mm</td>
+                                    <td class="td-price">700€</td>
+                                    <td class="td-quantity">1</td>
+                                    <td class="align-right td-total">700€</td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <th>Prix total</th>
+                                    <th id="total" class="align-right tfoot-total" colspan="4">1200€</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    
+                        <a href="index.html">
+                            <div class="cart__btn cart__btn--continue">
+                                <p>
+                                    Continuer mes achats
+                                </p>
+                            </div>
+                        </a>
+
+                        <a href="">
+                            <div class="cart__btn cart__btn--empty">
+                                <p>
+                                    Vider le panier
+                                </p>
+                            </div>
+                        </a>
+
+                    </div>
                 </section>
-                <section id="form">
-                    <p>Pour valider votre commande, merci de remplir le formulaire :</p>
-                    <p>(Tous les champs sont obligatoires.)</p>
+
+                <section id="order">
+                    <p class="order-p1">Pour valider votre commande, veuillez remplir le formulaire ci-dessous:</p>
+                    <p class="order-p2">(Tous les champs sont obligatoires.)</p>
+
+                    <div id="order-form">
+                        <form method="POST" action="confirm.html">
+                            <div>
+                                <label for="firstname">Prénom : </label>
+                                <br/>
+                                <input type="text" name="firstname" id="firstname" required pattern="[^0-9]*">
+                            </div>
+
+                            <div>
+                                <label for="lastname">Nom : </label>
+                                <br/>
+                                <input type="text" name="lastname" id="lastname" required pattern="[^0-9]*">
+                            </div>
+
+                            <div>
+                                <label for="address">Adresse : </label>
+                                <br/>
+                                <textarea name="address" id="address" required></textarea>
+                            </div>
+                            
+                            <div>
+                                <label for="city">Ville : </label>
+                                <br/>
+                                <input type="text" name="city" id="city" required pattern="[^0-9]*">
+                            </div>
+
+                            <div>
+                                <label for="email">Email : </label>
+                                <br/>
+                                <input type="email" name="email" id="email" required>
+                            </div>
+                        </form>
+                    
+                        <a href="confirm.html">
+                            <div class="cart__btn cart__btn--submit">
+                                <p>
+                                    Valider la commande
+                                </p>
+                            </div>
+                        </a>
+
+                    </div>
                 </section>
             </main>
 

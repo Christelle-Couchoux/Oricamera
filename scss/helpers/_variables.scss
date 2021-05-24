@@ -17,7 +17,12 @@ $color-bg: (
     header-nav: $color-primary-light,
     main: $color-basic-light,
     footer: $color-primary-light,
-    btn: $color-basic-light,
+    btn-seemodel: $color-basic-light,
+    error: $color-basic-light,
+    btn-addtocart: $color-basic-dark,
+    btn-continue: $color-basic-dark,
+    btn-empty: $color-basic-light,
+    btn-submit: $color-primary-light,
 );
 
 /* text */
@@ -27,8 +32,13 @@ $color-txt:(
     header-nav: $color-basic-dark,
     main: $color-basic-dark,
     footer: $color-basic-dark,
-    btn: $color-basic-dark,
+    btn-seemodel: $color-basic-dark,
     divider: $color-secondary,
+    error: $color-tertiary,
+    btn-addtocart: $color-basic-light,
+    btn-continue: $color-basic-light,
+    btn-empty: $color-basic-dark,
+    btn-submit: $color-basic-dark,
 );
 
 
@@ -59,7 +69,22 @@ $font-family:(
     footer-p1:$latobold,
     footer-p2:$latoregular,
     btn-seemodel: $montserratregular,
-
+    error:$montserratbold,
+    product-description:$latoregular,
+    product-price: $latobold,
+    form-label: $montserratbold,
+    form-choice: $latoregular,
+    btn-addtocart: $montserratregular,
+    thead: $montserratbold,
+    tbody: $latoregular,
+    tfoot: $latobold,
+    btn-continue: $montserratregular,
+    btn-empty: $montserratregular,
+    btn-submit: $montserratbold,
+    order-p1: $latoregular,
+    order-p2: $latoregular,
+    order-label: $latobold,
+    order-input: $latoregular,
 );
 
 /* font size map */
@@ -73,6 +98,22 @@ $font-size:(
     footer-p1:1.1rem,
     footer-p2:0.95rem,
     btn-seemodel: 0.8rem,
+    error: 1rem,
+    product-description: 1rem,
+    product-price: 1.2rem,
+    form-label: 0.9rem,
+    form-choice: 1rem,
+    btn-addtocart: 1rem,
+    thead: 0.8rem,
+    tbody: 0.8rem,
+    tfoot: 1rem,
+    btn-continue: 1rem,
+    btn-empty: 1rem,
+    btn-submit: 1rem,
+    order-p1: 1.2rem,
+    order-p2: 1rem,
+    order-label: 1rem,
+    order-input: 1rem,
 
 );
 
