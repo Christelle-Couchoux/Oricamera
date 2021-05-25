@@ -68,12 +68,3 @@ main{
 
 }
 
-.error{
-    @include size(auto, auto);
-    max-width: 550px;
-    @include color-bg-txt(error);
-    border: solid 3px map-get($map: $color-txt, $key: error);
-    margin: auto;
-    @include flexbox(row, nowrap, center, center);
-    @include font-family-size(error);
-}

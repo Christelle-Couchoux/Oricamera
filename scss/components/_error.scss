@@ -1,0 +1,9 @@
+.error{
+    @include size(auto, auto);
+    @include color-bg-txt(error);
+    @include font-family-size(error);
+    @include flexbox(row, nowrap, center, center);
+    margin: auto;
+    padding: 5px 10px 5px 10px;
+    border: solid 3px map-get($map: $color-txt, $key: error);
+}

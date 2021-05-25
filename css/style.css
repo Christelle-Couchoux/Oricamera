@@ -168,6 +168,29 @@ h4 {
 }
 
 /* components */
+.error {
+  /* default is square */
+  width: auto;
+  height: auto;
+  /* ex: @include color-bg-txt (header) */
+  background-color: #ffffff;
+  color: #bf0080;
+  /* ex: @include font-family-size (h1) */
+  font-family: "montserratbold", "arial", "sans-serif";
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  /* default is row */
+  flex-wrap: nowrap;
+  /* default is 'nowrap' */
+  justify-content: center;
+  /* default is 'flex-start' */
+  align-items: center;
+  margin: auto;
+  padding: 5px 10px 5px 10px;
+  border: solid 3px #bf0080;
+}
+
 /* layouts */
 header {
   /* ex: @include color-bg-txt (header) */
@@ -496,29 +519,6 @@ main a:visited, main a[href^=mailto] {
   font-family: "montserratbold", "arial", "sans-serif";
 }
 
-.error {
-  /* default is square */
-  width: auto;
-  height: auto;
-  max-width: 550px;
-  /* ex: @include color-bg-txt (header) */
-  background-color: #ffffff;
-  color: #bf0080;
-  border: solid 3px #bf0080;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  /* default is row */
-  flex-wrap: nowrap;
-  /* default is 'nowrap' */
-  justify-content: center;
-  /* default is 'flex-start' */
-  align-items: center;
-  /* ex: @include font-family-size (h1) */
-  font-family: "montserratbold", "arial", "sans-serif";
-  font-size: 1rem;
-}
-
 main {
   /* ex: @include color-bg-txt (header) */
   background-color: #ffffff;
@@ -572,30 +572,23 @@ main {
   width: 100%;
   height: auto;
 }
-.info__details {
-  display: flex;
-  flex-direction: column;
-  /* default is row */
-  flex-wrap: nowrap;
-  /* default is 'nowrap' */
-  justify-content: space-between;
-  /* default is 'flex-start' */
-  align-items: center;
-  /* default is square */
-  width: 87%;
-  height: auto;
-  padding: 20px 0 20px 0;
-}
 .info__description {
   /* ex: @include font-family-size (h1) */
   font-family: "latoregular", "arial", "sans-serif";
   font-size: 1rem;
-  padding: 0 0 10px 0;
+  /* default is square */
+  width: 87%;
+  height: auto;
+  padding: 20px 0 10px 0;
 }
 .info__price {
   /* ex: @include font-family-size (h1) */
   font-family: "latobold", "arial", "sans-serif";
   font-size: 1.2rem;
+  /* default is square */
+  width: 87%;
+  height: auto;
+  padding: 0 0 20px 0;
 }
 
 .form {
@@ -657,7 +650,7 @@ main {
 .form__btn {
   padding: 50px 0 50px 0;
 }
-.form button {
+.form__btn button {
   display: block;
   display: flex;
   flex-direction: row;
@@ -681,36 +674,12 @@ main {
   text-transform: uppercase;
   border: none;
 }
-.form button:hover {
+.form__btn button:hover {
   background-color: #a26b00;
   cursor: pointer;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 5px;
-}
-
-/* needed? */
-.error {
-  /* default is square */
-  width: auto;
-  height: auto;
-  max-width: 550px;
-  /* ex: @include color-bg-txt (header) */
-  background-color: #ffffff;
-  color: #bf0080;
-  border: solid 3px #bf0080;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  /* default is row */
-  flex-wrap: nowrap;
-  /* default is 'nowrap' */
-  justify-content: center;
-  /* default is 'flex-start' */
-  align-items: center;
-  /* ex: @include font-family-size (h1) */
-  font-family: "montserratbold", "arial", "sans-serif";
-  font-size: 1rem;
 }
 
 #cart {
@@ -794,7 +763,7 @@ table tbody {
 table tfoot {
   /* ex: @include font-family-size (h1) */
   font-family: "latobold", "arial", "sans-serif";
-  font-size: 1rem;
+  font-size: 0.9rem;
   background-color: #c8fff3;
 }
 @media all and (min-width: 576px) {
@@ -805,7 +774,30 @@ table tfoot {
 
 .align-right {
   text-align: right;
-  padding: 0 20px 0 0;
+  padding: 0 3px 0 0;
+}
+@media all and (min-width: 576px) {
+  .align-right {
+    padding: 0 10px 0 10px;
+  }
+}
+
+.align-left {
+  text-align: left;
+  padding: 0 3px 0 3px;
+}
+@media all and (min-width: 576px) {
+  .align-left {
+    padding: 0 10px 0 10px;
+  }
+}
+
+.padding {
+  padding: 0 3px 0 3px;
+}
+
+.extra-padding {
+  padding: 0 7px 0 7px;
 }
 
 .cart__btn {
@@ -935,9 +927,6 @@ table tfoot {
   font-family: "latoregular", "arial", "sans-serif";
   font-size: 1rem;
 }
-#order-form input:focus {
-  background-color: #ffffff;
-}
 #order-form textarea {
   /* default is square */
   width: 100%;
@@ -947,9 +936,6 @@ table tfoot {
   /* ex: @include font-family-size (h1) */
   font-family: "latoregular", "arial", "sans-serif";
   font-size: 1rem;
-}
-#order-form textarea:focus {
-  background-color: #ffffff;
 }
 
 #confirm {

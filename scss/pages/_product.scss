@@ -15,7 +15,6 @@ main{
 
 #model{
     @include flexbox(column, nowrap, space-around, center);
-
     margin: auto;
 }
 
@@ -37,19 +36,16 @@ main{
         }
     }
 
-    &__details{
-        @include flexbox(column, nowrap, space-between, center);
-        @include size(87%, auto);
-        padding: 20px 0 20px 0;
-    }
-
     &__description{
         @include font-family-size(product-description);
-        padding: 0 0 10px 0;
+        @include size(87%, auto);
+        padding: 20px 0 10px 0;
     }    
 
     &__price{
         @include font-family-size(product-price);
+        @include size(87%, auto);
+        padding: 0 0 20px 0;
     }
 }
 
@@ -93,37 +89,25 @@ main{
 
     &__btn{
         padding: 50px 0 50px 0;
-    }
 
-    button{
-        display: block;
-        @include flexbox(row, nowrap, center, center);
-        @include color-bg-txt(btn-addtocart);
-        @include font-family-size(btn-addtocart);
-        @include size(268px, auto);
-        padding: 15px;
-        margin: auto;
-        text-transform: uppercase;
-        border: none;
+        button{
+            display: block;
+            @include flexbox(row, nowrap, center, center);
+            @include color-bg-txt(btn-addtocart);
+            @include font-family-size(btn-addtocart);
+            @include size(268px, auto);
+            padding: 15px;
+            margin: auto;
+            text-transform: uppercase;
+            border: none;
 
-        &:hover{
-            background-color: $color-secondary;
-            cursor: pointer;
-            text-decoration: underline;
-            text-decoration-thickness: 2px;
-            text-underline-offset: 5px;   
+            &:hover{
+                background-color: $color-secondary;
+                cursor: pointer;
+                text-decoration: underline;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 5px;   
+            }
         }
     }
-}
-
-
-/* needed? */
-.error{
-    @include size(auto, auto);
-    max-width: 550px;
-    @include color-bg-txt(error);
-    border: solid 3px map-get($map: $color-txt, $key: error);
-    margin: auto;
-    @include flexbox(row, nowrap, center, center);
-    @include font-family-size(error);
 }

@@ -21,10 +21,6 @@
 
 <body>
 
-    <!-- product .js script -->
-    <script src="../js/product.js"></script>
-
-
     <div id="bg">
         <div id="content">
 
@@ -128,38 +124,25 @@ l-264 0 11 -35z"/>
 </g>
                         </svg>
                     </p>
-                    <h3>Personnalisez votre appareil photo!</h3>
+                    <h3>Personnalisez votre appareil photo&nbsp;!</h3>
                     
                     <div id="model">
 
                         <div class="info">
-                            <!-- product details created with js -->
-                            <h4 class="info__name">Zurss 50S</h4>
-                            <div class="info__image">
-                                <img src="../img/vcam_1.jpg" alt=""/>
-                            </div>
-                            <div class="info__details">
-                                <div class="info__description">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    </p>
-                                </div>
-                                <div class="info__price">
-                                    <p>499.00€</p>
-                                </div>
-                            </div>
+                            <!-- product details filled in with js -->
+                            <h4 class="info__name"></h4>
+                            <div class="info__image"><img src="" alt=""/></div>
+                            <p class="info__description"></p>
+                            <p class="info__price"></p>
                         </div>
 
-                        <form class="form" method="GET" action="cart.html">
+                        <form class="form">
                             <div class="form__lenses">
                                 <label for="lens-selection">Objectif : </label>
                                 <br/>
-                                <select id="lens-selection" name="" required>
+                                <select id="lens-selection" name="lens-selection" required>
                                     <option value=""> - Choisissez votre objectif - </option>
-                                    <option value="xxx">xxx</option>
-                                    <option value="yyy">yyy</option>
-                                    <!-- options created with js -->
+                                    <!-- lens options created with js -->
                                 </select>
                             </div>
 
@@ -169,7 +152,7 @@ l-264 0 11 -35z"/>
                                 <input type="number" id="quantity" value="1" min="1" max="10" required>
                             </div>
 
-                            <div class="form__btn">
+                            <div id="addtocart" class="form__btn">
                                 <button>
                                     Ajouter au panier
                                 </button>
@@ -212,6 +195,10 @@ l-264 0 11 -35z"/>
 
         </div>
     </div>
+
+    <!-- product .js script -->
+    <script src="../js/product.js"></script>
+
 </body>
 
 </html>
