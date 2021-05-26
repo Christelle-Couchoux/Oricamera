@@ -53,7 +53,6 @@ console.log(pricesArray);
 
 
 // add up all the prices
-
 /* reducer function 
 currentValue is each value in the array in turn
 return value (sum) is put in accumulator for next iteration */
@@ -78,30 +77,116 @@ btnEmpty.addEventListener('click', function(event){ // listen to empty cart butt
 });
 
 
-// verify form
-// with element.checkValidity
-
 // save totalPrice in local storage for confirm page
+function storeOrderTotal(){
+    const storedTotal = localStorage.setItem('orderTotal', totalPrice);
+    console.log(storedTotal);
+}
+
 
 // create object 'contact'
+function createContact(){
+    let contact = {
+        firstName : firstname.value, // id de l'input .value
+        lastName : lastname.value,
+        address : address.value,
+        city : city.value,
+        email : email.value 
+    }
+    console.log(contact);
+}
+
 
 // create products array
+function createProducts(){
+    let products = [];
+    for (storedOrder of storedOrders){
+        let productId = storedOrder.cameraId;
+        products.push(productId);
+    }
+    console.log(products);
+}
+
 
 // create object with contact + products array
-
-// send data to server with fetch method POST
-// if ok save order id in local storage
-// and go to confirm page
-
-
-
-
-
+function createObjectToSend(){
+    let objectToSend = {
+        contact,
+        products
+    }
+    console.log(objectToSend);
+}
 
 
+// store order id
+
+function storeOrderId(data){
+    console.log(data.orderId);
+    localStorage.setItem('orderId'. data.orderId);
+    window.location = 'confirm.html';
+    localStorage.removeItem('OrdersList')
+}
+
+
+// send data to server
+
+function send(objectToSend){ // function to send order to server 
+    fetch('http://localhost:3000/api/teddies/order', {
+        method : "POST",
+        headers : {
+            'Accept' : 'application/json',
+            'Content-type' : 'application/json',
+        },
+        body : JSON.stringify(objectToSend)
+    })
+
+    .then (function (response) {
+        if (response.ok) { // if response ok
+            return response.json(); //return response (promise)
+        }
+    })
+
+    .then(function (serverResponse){ // resolved promise 
+        console.log(serverResponse); // print object
+        storeOrderId(serverResponse); // call function createProduct
+    })
+
+    .catch (function(err){
+        console.error('Erreur lors de la requête : ', err); // print error message in console
+        const model = document.getElementById('model'); // in div id="model"
+        const error = model.appendChild(document.createElement('div')); // create div error
+        error.classList.add('error'); // with class="error" to add css style
+        error.innerText = 'Une erreur est survenue lors de la réponse serveur.'; // with error message text
+    }); 
+}
+
+
+// validate order
+
+const firstname = document.getElementById('firstname');
+const lastname = document.getElementById('lastname');
+const address = document.getElementById('address');
+const city = document.getElementById('city');
+const email = document.getElementById('email');
+
+function validateOrder(){
+    const submit = document.getElementById('submit');
+    submit.addEventListener("click", function (event) {
+        if ( isValid(firstname.value) && isValid(lastname.value) && isValid(address.value) 
+            && isValid(city.value) && isValid(email.value) ){
+            storedOrderTotal();
+            createContact();
+            createProducts();
+            createObjectToSend();
+            send(objectToSend);
+        }
+    })
+}
 
 
 
+// call functions
 
 createCart();
+validateOrder();
 

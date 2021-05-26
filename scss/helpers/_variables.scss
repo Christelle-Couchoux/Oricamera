@@ -85,6 +85,9 @@ $font-family:(
     order-p2: $latoregular,
     order-label: $latobold,
     order-input: $latoregular,
+    summary: $montserratregular,
+    summary-label: $latobold,
+    summary-data: $latoregular,
 );
 
 /* font size map */
@@ -114,7 +117,9 @@ $font-size:(
     order-p2: 1rem,
     order-label: 1rem,
     order-input: 1rem,
-
+    summary: 1.2rem,
+    summary-label: 1rem,
+    summary-data: 1rem,
 );
 
 

@@ -941,6 +941,52 @@ table tfoot {
 #confirm {
   margin: auto;
   text-align: center;
+  max-width: 1000px;
+}
+#confirm h3 {
+  border-bottom: solid 1px #2c9c97;
+}
+#confirm h4 {
+  padding: 40px 0 40px 0;
+}
+
+#summary {
+  border: solid 2px #a26b00;
+  /* default is square */
+  width: 87%;
+  height: auto;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 50px;
+  text-align: left;
+}
+@media all and (min-width: 576px) {
+  #summary {
+    /* default is square */
+    width: 500px;
+    height: auto;
+  }
+}
+#summary p:first-child {
+  /* ex: @include font-family-size (h1) */
+  font-family: "montserratregular", "arial", "sans-serif";
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 10px 10px 20px 10px;
+  text-align: center;
+}
+#summary .summary-label {
+  /* ex: @include font-family-size (h1) */
+  font-family: "latobold", "arial", "sans-serif";
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 10px 10px 5px 10px;
+}
+#summary .summary-data {
+  /* ex: @include font-family-size (h1) */
+  font-family: "latoregular", "arial", "sans-serif";
+  font-size: 1rem;
+  padding: 0 10px 10px 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
