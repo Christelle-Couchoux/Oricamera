@@ -90,7 +90,7 @@ main{
     &__btn{
         padding: 50px 0 50px 0;
 
-        button{
+        p{
             display: block;
             @include flexbox(row, nowrap, center, center);
             @include color-bg-txt(btn-addtocart);

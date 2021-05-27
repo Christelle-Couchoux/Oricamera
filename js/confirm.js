@@ -17,7 +17,7 @@ summaryOrderId.innerText = orderId;
 
 // total
 const summaryOrderTotal = document.getElementById('order-total');
-summaryOrderTotal.innerText = orderTotal;
+summaryOrderTotal.innerText = orderTotal + ' €';
 
 
 // clear localStorage

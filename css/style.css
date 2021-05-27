@@ -59,6 +59,18 @@ i {
   }
 }
 
+/* font less bold in Firefox */
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+@-moz-document url-prefix() {
+  body {
+    font-weight: lighter !important;
+  }
+}
 /* define fonts */
 /* Montserrat */
 @font-face {
@@ -650,7 +662,7 @@ main {
 .form__btn {
   padding: 50px 0 50px 0;
 }
-.form__btn button {
+.form__btn p {
   display: block;
   display: flex;
   flex-direction: row;
@@ -674,7 +686,7 @@ main {
   text-transform: uppercase;
   border: none;
 }
-.form__btn button:hover {
+.form__btn p:hover {
   background-color: #a26b00;
   cursor: pointer;
   text-decoration: underline;

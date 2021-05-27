@@ -38,12 +38,14 @@ function createCart(){
         tdTotal.classList.add('td-total', 'align-right');
         tdTotal.innerText = storedOrder.cameraPrice * storedOrder.cameraQuantity + ' €';
     }
+    
 };
 
 
 // calculate total price
-
+function priceCalculation(){
 // put all prices in an array
+
 let pricesArray = [];
 for (storedOrder of storedOrders){ // for each order stored
     let price = storedOrder.cameraPrice; // get the price
@@ -65,6 +67,7 @@ console.log(totalPrice);
 //fill in total price cell
 const thTotal = document.getElementById('total'); // in total price cell
 thTotal.innerText = totalPrice + ' €';
+}
 
 
 // empty cart
@@ -131,7 +134,7 @@ function storeOrderId(data){
 // send data to server
 
 function send(objectToSend){ // function to send order to server 
-    fetch('http://localhost:3000/api/teddies/order', {
+    fetch('http://localhost:3000/api/cameras/order', {
         method : "POST",
         headers : {
             'Accept' : 'application/json',

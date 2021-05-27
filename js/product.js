@@ -21,7 +21,13 @@ function getProduct(){ // function to get product details from api
 
         .then(function (product){ // value of resolved promise is the object 'product'
             console.log(product); // print object
+            
             createProduct(product); // call function createProduct
+
+            const addtocart = document.getElementById('addtocart');
+            addtocart.addEventListener('click', function(event){ // listen to click on 'add to cart' button
+                createOrder(product); // call function createOrder
+            })
         })
 
         .catch (function(err){
@@ -64,77 +70,51 @@ function createProduct(product){ // display info from object'product'
     }
 }
 
-// ok up to there
 
+// create order if lens selected
 
-
-
-
-// add product to cart (via localStorage)
-
-const addtocart = document.getElementById('addtocart');
-const selectedLens = document.getElementById('lens-selection'); 
-const isValidLens = selectedLens.checkValidity();
-
-
-addtocart.addEventListener('click', function(event){ // listen to click on 'add to cart' button
+function createOrder(product){
+    const select = document.getElementById('lens-selection');
+    const isValidLens = select.checkValidity();
     if (isValidLens){ // if a lens is selected 
         console.log(isValidLens);
         // create order
         const chosenCamera = { 
             cameraId: product._id,
             cameraName: product.name,
-            cameraLens: selectedLens.value,
+            cameraLens: select.value,
             cameraQuantity: quantity.value,
             cameraPrice: product.price / 100,
         };
         console.log(chosenCamera);
-   }else{ // if not do nothing
-    }
-})
-
-// SOMEHOW
-// when we choose a lens and click 'add to cart' 
-// it put the lens name in the url...
-// ?lens-selection=35mm
-// parameter = id lens-selection, value = selectedLens.value
-// HOW IS THAT EVEN POSSIBLE???!!!
-
-
-
-
-
+        storeOrder(chosenCamera); // call function store order in loacl storage
+    }   
+}
 
 
 // store order in localStorage
 
 /* local storage stores the array 'storedOrders', 
-with the key 'ordersList' and the value 'JSON.stigify(storedOrders)'
+with the key 'ordersList' and the value 'JSON.stigify(storedOrders)' */
 
-function storeOrder(){
+function storeOrder(object){
     let storedOrders = JSON.parse(localStorage.getItem('ordersList')); // get the array out of local storage, change it to js and put it in a variable
     if (storedOrders) { // if the array already exists in local storage
-        storedOrders.push(chosenCamera); // add new order to array
+        storedOrders.push(object); // add new order to array
         localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
         console.log(storedOrders);
-        // window.location.href = "cart.html"; // go to cart page
+        window.location.href = "cart.html"; // go to cart page
     } else { // if the array does not exist yet
         storedOrders = []; // create the array (empty)
-        storedOrders.push(chosenCamera); // put the new order in it
+        storedOrders.push(object); // put the new order in it
         localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array to local storage (changed to json)
         console.log(storedOrders);
-        // window.location.href = "cart.html"; // go to cart page
+        window.location.href = "cart.html"; // go to cart page
     }                               
 }
 
- */
-
-      
 
 
-
-
-// call functions
+// call function
 
 getProduct();
-//storeOrder();
