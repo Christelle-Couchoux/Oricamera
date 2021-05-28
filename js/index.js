@@ -55,7 +55,7 @@ function createList (products){ // function to create and fill in the html eleme
         
         //a.setAttribute('href', 'product.html/?id=' + product._id);
         
-        let url = new URL('http://product.html/');
+        let url = new URL('file:///Users/christelle/Documents/work/web%20dev/%20OpenClassrooms/projets/P5%20Construisez%20un%20site%20e-commerce/P5/Orinoco/html/product.html/');
         url.searchParams.set('id', product._id);
         console.log(url);
 
