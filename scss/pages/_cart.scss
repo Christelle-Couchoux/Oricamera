@@ -102,7 +102,7 @@ table{
     @include flexbox(row, nowrap, center, center);
     margin: auto;
     
-    p{
+    input{
         @include size(268px, auto);
         padding: 15px;
         margin: auto;
@@ -113,7 +113,7 @@ table{
     &--continue{
         padding: 30px 0 10px 0;
 
-        p{
+        input{
             @include color-bg-txt(btn-continue);
             @include font-family-size(btn-continue);
             border: solid 2px $color-basic-dark;
@@ -132,7 +132,7 @@ table{
     &--empty{
         padding: 10px 0 30px 0;
 
-        p{
+        input{
             @include color-bg-txt(btn-empty);
             @include font-family-size(btn-empty);
             border: solid 2px $color-basic-dark;
@@ -150,10 +150,18 @@ table{
 
     &--submit{
         padding: 20px 0 50px 0;
+        margin: auto;
+        text-transform: uppercase;
+        border: none;
 
-        p{
+        #submit{
+            display: block;
+            @include flexbox(row, nowrap, center, center);
             @include color-bg-txt(btn-submit);
             @include font-family-size(btn-submit);
+            @include size(268px, auto);
+            padding: 15px;
+            margin: auto;
             border: solid 2px $color-primary-light;
             text-align: center;
 
@@ -166,6 +174,24 @@ table{
             }
         }
     }
+
+/*
+    &__btn{
+        padding: 50px 0 50px 0;
+
+        input{
+            display: block;
+            @include flexbox(row, nowrap, center, center);
+            @include color-bg-txt(btn-addtocart);
+            @include font-family-size(btn-addtocart);
+            @include size(268px, auto);
+            padding: 15px;
+            margin: auto;
+            text-transform: uppercase;
+            border: none;
+        }
+    }        
+*/
 }
 
 

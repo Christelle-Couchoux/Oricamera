@@ -1,48 +1,59 @@
 // url for selected product
 
+/*
 const queryString = window.location.search; // returns ?id=productId. id is a search parameter
 console.log(queryString); 
-const id = new URLSearchParams(queryString).get('id'); // return the value for the parameter ‘id', put it in const id
+const id = queryString.searchParams.get('id'); // return the value for the parameter ‘id', put it in const id
+console.log(id);
+*/
+
+
+let productUrl = window.location.href; 
+console.log(productUrl); 
+const id = URLSearchParams(productUrl).get('id');
 console.log(id);
 
-const url = 'http://localhost:3000/api/cameras/' +id;
+
+
+/*
+let productUrl = window.location.href;
+const idSearch = URLSearchParams(productUrl.substring(1));
+const id = idSearch.get('id');
+console.log(idSearch);
+*/
+
+
+const url = 'http://localhost:3000/api/cameras/' + id;
 console.log(url);
 
 
 // get product details from API
 
-function getProduct(){ // function to get product details from api
-    fetch(url)
-        .then (function (response) {
-            if (response.ok) { // if response ok
-                return response.json(); //return response (promise)
-            }
-        })
+fetch(url)
+    .then (function (response) {
+        if (response.ok) { // if response ok
+            return response.json(); //return response (promise)
+        }
+    })
 
-        .then(function (product){ // value of resolved promise is the object 'product'
-            console.log(product); // print object
-            
-            createProduct(product); // call function createProduct
+    .then(function (product){ // value of resolved promise is the object 'product'
+        console.log(product); // print object
+        createProduct(product); // call function to display poduct details
+        listenToAddToCart(product); // call function to listen to click on 'add to cart' button   
+    })
 
-            const addtocart = document.getElementById('addtocart');
-            addtocart.addEventListener('click', function(event){ // listen to click on 'add to cart' button
-                createOrder(product); // call function createOrder
-            })
-        })
-
-        .catch (function(err){
-            console.error('Erreur lors de la requête : ', err); // print error message in console
-            const model = document.getElementById('model'); // in div id="model"
-            const error = model.appendChild(document.createElement('div')); // create div error
-            error.classList.add('error'); // with class="error" to add css style
-            error.innerText = 'Une erreur est survenue lors du chargement du produit.'; // with error message text
-        });   
-} 
-
+    .catch (function(err){
+        console.error('Erreur lors de la requête : ', err); // print error message in console
+        const model = document.getElementById('model'); // in div id="model"
+        const error = model.appendChild(document.createElement('div')); // create div error
+        error.classList.add('error'); // with class="error" to add css style
+        error.innerText = 'Une erreur est survenue lors du chargement du produit.'; // with error message text
+    });   
+ 
 
 // create product info
 
-function createProduct(product){ // display info from object'product'
+function createProduct(product){ // display info from object 'product'
 
     // fill in name
     const h4 = document.getElementsByClassName('info__name'); // element for product name
@@ -71,7 +82,18 @@ function createProduct(product){ // display info from object'product'
 }
 
 
-// create order if lens selected
+// listen to click on 'add to cart' button
+
+function listenToAddToCart(product){ // 'product' in parameter because createOrder needs it
+    const addtocart = document.getElementById('addtocart');
+    addtocart.addEventListener('click', function(event){
+        event.preventDefault();
+        createOrder(product); // call function to create the order
+    })
+}
+
+
+// create order (if lens selected)
 
 function createOrder(product){
     const select = document.getElementById('lens-selection');
@@ -87,8 +109,10 @@ function createOrder(product){
             cameraPrice: product.price / 100,
         };
         console.log(chosenCamera);
-        storeOrder(chosenCamera); // call function store order in loacl storage
-    }   
+        storeOrder(chosenCamera); // call function to store order in loacl storage
+    }else{
+        alert('Veuillez choisir un objectif.');
+    }  
 }
 
 
@@ -112,9 +136,3 @@ function storeOrder(object){
         window.location.href = "cart.html"; // go to cart page
     }                               
 }
-
-
-
-// call function
-
-getProduct();

@@ -1,12 +1,10 @@
-// get stored data from local storage
-
-let storedOrders = JSON.parse(localStorage.getItem('ordersList'));
-console.log(storedOrders);
-
-
-// create cart
+// create cart table
 
 function createCart(){
+    // get stored data from local storage
+    let storedOrders = JSON.parse(localStorage.getItem('ordersList'));
+    console.log(storedOrders);
+
     for (storedOrder of storedOrders){ // for each order in the array
         const tbody = document.getElementById('cart-tablebody'); // in the table
         
@@ -38,102 +36,141 @@ function createCart(){
         tdTotal.classList.add('td-total', 'align-right');
         tdTotal.innerText = storedOrder.cameraPrice * storedOrder.cameraQuantity + ' €';
     }
-    
+    priceCalculation(storedOrders); // call function to calculate total price
 };
 
 
 // calculate total price
-function priceCalculation(){
-// put all prices in an array
+function priceCalculation(storedOrders){
 
-let pricesArray = [];
-for (storedOrder of storedOrders){ // for each order stored
-    let price = storedOrder.cameraPrice; // get the price
-    pricesArray.push(price); // put it in the array
-};
-console.log(pricesArray);
+    // put all prices in an array
+    let pricesArray = [];
+    for (storedOrder of storedOrders){ // for each order stored
+        let price = storedOrder.cameraPrice; // get the price
+        pricesArray.push(price); // put it in the array
+    };
+    console.log(pricesArray);
 
+    // add up all the prices
+    /* reducer function 
+    currentValue is each value in the array in turn
+    return value (sum) is put in accumulator for next iteration
+    reduce() execute the reducer function, from index 0 */
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    const totalPrice = pricesArray.reduce(reducer,0);
+    console.log(totalPrice);
 
-// add up all the prices
-/* reducer function 
-currentValue is each value in the array in turn
-return value (sum) is put in accumulator for next iteration */
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-// reduce() execute the reducer function, from index 0
-const totalPrice = pricesArray.reduce(reducer,0);
-console.log(totalPrice);
-
-//fill in total price cell
-const thTotal = document.getElementById('total'); // in total price cell
-thTotal.innerText = totalPrice + ' €';
+    // fill in total price cell
+    const thTotal = document.getElementById('total'); // in total price cell
+    thTotal.innerText = totalPrice + ' €'; // add price in euros
+    
+    storeTotalPrice(totalPrice); // call function to store total price
 }
+
+
+// store totalPrice in local storage
+
+function storeTotalPrice(totalPrice){
+    localStorage.setItem('orderTotal', JSON.stringify(totalPrice));
+    console.log(totalPrice);
+}
+
+
+////////////
 
 
 // empty cart
 
-const btnEmpty = document.getElementById('empty');
+function emptyCart(){
+    const btnEmpty = document.getElementById('empty');
+    btnEmpty.addEventListener('click', function(event){ // listen to empty cart button
+        localStorage.removeItem('ordersList'); // remove array with stored orders
+        window.location.href = "cart.html"; // reload the page so changes taken into account
+    });
+}
 
-btnEmpty.addEventListener('click', function(event){ // listen to empty cart button
-    localStorage.removeItem('ordersList'); // remove array with stored orders
-    window.location.href = "cart.html"; // reload the page so changes taken into account
-});
+
+////////////
 
 
-// save totalPrice in local storage for confirm page
-function storeOrderTotal(){
-    const storedTotal = localStorage.setItem('orderTotal', totalPrice);
-    console.log(storedTotal);
+// validate order
+
+function validateOrder(){
+    const submit = document.getElementById('submit');
+    storedOrders = JSON.parse(localStorage.getItem('ordersList'));
+
+    submit.addEventListener("click", function (event) {
+        event.preventDefault();
+        createContact(); // call function to create object contact
+    })
 }
 
 
 // create object 'contact'
-function createContact(){
-    let contact = {
-        firstName : firstname.value, // id de l'input .value
-        lastName : lastname.value,
-        address : address.value,
-        city : city.value,
-        email : email.value 
+function createContact(contact){
+    const firstname = document.getElementById('firstname');
+    const lastname = document.getElementById('lastname');
+    const address = document.getElementById('address');
+    const city = document.getElementById('city');
+    const email = document.getElementById('email');
+
+    const isValidFirstName = firstname.checkValidity();
+    const isValidLastName = lastname.checkValidity();
+    const isValidAddress = address.checkValidity();
+    const isValidCity = city.checkValidity();
+    const isValidEmail = email.checkValidity();
+
+    console.log(isValidFirstName, isValidLastName, isValidAddress, isValidCity, isValidEmail);
+
+    if (isValidFirstName && isValidLastName && isValidAddress && isValidCity && isValidEmail){
+        let contact = {
+            firstName : firstname.value,
+            lastName : lastname.value,
+            address : address.value,
+            city : city.value,
+            email : email.value 
+        }
+        console.log(contact);
+
+        createProducts(storedOrders, contact); // call function to create products array
+    }else{
+        alert('Veuillez remplir tous les champs du formulaire');
     }
-    console.log(contact);
 }
 
 
 // create products array
-function createProducts(){
+function createProducts(storedOrders, contact){
+    storedOrders = JSON.parse(localStorage.getItem('ordersList'));
+    console.log(storedOrders);
+
     let products = [];
     for (storedOrder of storedOrders){
         let productId = storedOrder.cameraId;
         products.push(productId);
     }
     console.log(products);
+
+    createObjectToSend(contact, products); // call function to create object with contact and products
 }
 
 
 // create object with contact + products array
-function createObjectToSend(){
+
+function createObjectToSend(contact, products){
     let objectToSend = {
         contact,
         products
     }
     console.log(objectToSend);
-}
 
-
-// store order id
-
-function storeOrderId(data){
-    console.log(data.orderId);
-    localStorage.setItem('orderId'. data.orderId);
-    window.location = 'confirm.html';
-    localStorage.removeItem('OrdersList')
+    send(objectToSend); // call function to send data to server
 }
 
 
 // send data to server
 
-function send(objectToSend){ // function to send order to server 
+function send(objectToSend){
     fetch('http://localhost:3000/api/cameras/order', {
         method : "POST",
         headers : {
@@ -151,7 +188,7 @@ function send(objectToSend){ // function to send order to server
 
     .then(function (serverResponse){ // resolved promise 
         console.log(serverResponse); // print object
-        storeOrderId(serverResponse); // call function createProduct
+        storeOrderId(serverResponse); // call function 
     })
 
     .catch (function(err){
@@ -164,32 +201,21 @@ function send(objectToSend){ // function to send order to server
 }
 
 
-// validate order
+// store order id
 
-const firstname = document.getElementById('firstname');
-const lastname = document.getElementById('lastname');
-const address = document.getElementById('address');
-const city = document.getElementById('city');
-const email = document.getElementById('email');
-
-function validateOrder(){
-    const submit = document.getElementById('submit');
-    submit.addEventListener("click", function (event) {
-        if ( isValid(firstname.value) && isValid(lastname.value) && isValid(address.value) 
-            && isValid(city.value) && isValid(email.value) ){
-            storedOrderTotal();
-            createContact();
-            createProducts();
-            createObjectToSend();
-            send(objectToSend);
-        }
-    })
+function storeOrderId(data){
+    console.log(data.orderId);
+    localStorage.setItem('orderId', data.orderId);
+    window.location = 'confirm.html';
+    localStorage.removeItem('OrdersList')
 }
 
+
+////////////
 
 
 // call functions
 
 createCart();
+emptyCart();
 validateOrder();
-

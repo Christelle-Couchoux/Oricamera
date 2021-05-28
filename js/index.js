@@ -3,27 +3,25 @@ const url = 'http://localhost:3000/api/cameras'
 
 // get items from API
 
-function getItems(){ // function to get items from api 
-    fetch(url)
-        .then (function (response){
-            if (response.ok) { // if response ok
-                return response.json(); //return response (promise)
-            }
-        })
+fetch(url)
+    .then (function (response){
+        if (response.ok) { // if response ok
+            return response.json(); //return response (promise)
+        }
+    })
 
-        .then (function (products){ // value of resolved promise is the array 'products'
-            console.log(products); // print array
-            createList(products); // call function createList
-        })
+    .then (function (products){ // value of resolved promise is the array 'products'
+        console.log(products); // print array
+        createList(products); // call function createList
+    })
 
-        .catch (function (err){
-            console.error('Erreur lors de la requête : ', err); // print error message in console
-            const productsList = document.getElementById('products-list'); // in section id="products-list"
-            const error = productsList.appendChild(document.createElement('div')); // create div error
-            error.classList.add('error'); // with class="error" to add css style
-            error.innerText = 'Une erreur est survenue lors du chargement des produits.'; // with error message text
-        })
-};
+    .catch (function (err){
+        console.error('Erreur lors de la requête : ', err); // print error message in console
+        const productsList = document.getElementById('products-list'); // in section id="products-list"
+        const error = productsList.appendChild(document.createElement('div')); // create div error
+        error.classList.add('error'); // with class="error" to add css style
+        error.innerText = 'Une erreur est survenue lors du chargement des produits.'; // with error message text
+    })
 
 
 // create products list
@@ -51,21 +49,36 @@ function createList (products){ // function to create and fill in the html eleme
         img.setAttribute('alt', 'Photo du modèle ' + product.name); // with attibute alt="Photo du modèle xxx"
         
         // create link a
+        //set attribute href for link to product.html page for specific product 
         const a = divItem.appendChild(document.createElement('a')); // create link in div item
-        a.setAttribute('href', 'product.html?id=' + product._id); // link to product.html page for specific product 
-        // '?id=' so we can use window.location.search on page product. 'id' is a search parameter
+
+        
+        //a.setAttribute('href', 'product.html/?id=' + product._id);
+        
+        let url = new URL('http://product.html/');
+        url.searchParams.set('id', product._id);
+        console.log(url);
+
+        a.setAttribute('href', url);
+
+
+
+        /*
+        
+        let url = new URL('http://product.html/');
+        url.searchParams.append('id', product._id);
+        console.log(url);
+
+        a.setAttribute('href', url);
+         */
         
         // create div item__btn
         const btn = a.appendChild(document.createElement('div')); // create div in a
         btn.classList.add('item__btn'); // with class="item__btn"
         
         // create p
-        const p = btn.appendChild(document.createElement('p')); // create p in div btn
-        p.innerText = 'Voir ce modèle'; // create btn text       
+        const input = btn.appendChild(document.createElement('input')); // create input in div btn
+        input.setAttribute('type', 'button'); // with attribute type="button"
+        input.setAttribute('value', 'Voir ce modèle') // with attribute value="voir ce modèle" 
     }                
 }           
-        
-       
-// call function
-
-getItems();

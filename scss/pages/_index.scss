@@ -48,21 +48,25 @@ main{
     }
 
     &__btn{
-        display: block;
-        @include size(200px, 25px);
-        padding: 1px;
         margin: 5px 0 0 0;
-        @include color-bg-txt(btn-seemodel);
-        @include font-family-size(btn-seemodel);
-        @include flexbox(row, nowrap, center, center);
-        text-transform: uppercase;
-        border: solid 1px $color-basic-dark;
 
-        &:hover{
-            border: solid 2px $color-secondary;
-            padding: 0;
-            color: $color-secondary;
-            font-family: $montserratbold;
+        input{
+            display: block;
+            @include size(200px, 25px);
+            padding: 1px;
+            @include color-bg-txt(btn-seemodel);
+            @include font-family-size(btn-seemodel);
+            @include flexbox(row, nowrap, center, center);
+            text-transform: uppercase;
+            border: solid 1px $color-basic-dark;
+            cursor: pointer;
+        
+            &:hover{
+                border: solid 2px $color-secondary;
+                padding: 0;
+                color: $color-secondary;
+                font-family: $montserratbold;
+            }
         }
     }
 
