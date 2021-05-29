@@ -1,13 +1,13 @@
 // create cart table
 
-function createCart(){
+function createCart() {
     // get stored data from local storage
     let storedOrders = JSON.parse(localStorage.getItem('ordersList'));
     console.log(storedOrders);
 
-    for (storedOrder of storedOrders){ // for each order in the array
+    for(storedOrder of storedOrders) { // for each order in the array
         const tbody = document.getElementById('cart-tablebody'); // in the table
-        
+
         // add one row
         const tr = tbody.appendChild(document.createElement('tr'));
 
@@ -41,36 +41,41 @@ function createCart(){
 
 
 // calculate total price
-function priceCalculation(storedOrders){
+function priceCalculation(storedOrders) {
 
     // put all prices in an array
     let pricesArray = [];
-    for (storedOrder of storedOrders){ // for each order stored
+    for(storedOrder of storedOrders) { // for each order stored
         let price = storedOrder.cameraPrice; // get the price
         pricesArray.push(price); // put it in the array
     };
     console.log(pricesArray);
 
     // add up all the prices
-    /* reducer function 
-    currentValue is each value in the array in turn
-    return value (sum) is put in accumulator for next iteration
-    reduce() execute the reducer function, from index 0 */
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    const totalPrice = pricesArray.reduce(reducer,0);
+    const totalPrice = pricesArray.reduce(addUp,0); // function reduce executes function addUp
     console.log(totalPrice);
 
     // fill in total price cell
     const thTotal = document.getElementById('total'); // in total price cell
     thTotal.innerText = totalPrice + ' €'; // add price in euros
-    
+
     storeTotalPrice(totalPrice); // call function to store total price
+}
+
+
+// add up prices of all the products in the order
+
+/* currentValue is each value in the array in turn
+return value (sum) is put in accumulator for next iteration
+reduce() execute the function addUp, from index 0 */
+function addUp(accumulator, currentValue) {
+    return (accumulator + currentValue);
 }
 
 
 // store totalPrice in local storage
 
-function storeTotalPrice(totalPrice){
+function storeTotalPrice(totalPrice) {
     localStorage.setItem('orderTotal', JSON.stringify(totalPrice));
     console.log(totalPrice);
 }
@@ -79,13 +84,28 @@ function storeTotalPrice(totalPrice){
 ////////////
 
 
+// continue shopping
+
+function continueShopping() {
+    const btnContinue = document.getElementById('continue');
+
+    btnContinue.addEventListener('click', function(event) { // listen to 'continuer mes achats' button
+        window.location.href = 'index.html'; // go back to home page
+    });
+}
+
+
+////////////
+
+
 // empty cart
 
-function emptyCart(){
+function emptyCart() {
     const btnEmpty = document.getElementById('empty');
-    btnEmpty.addEventListener('click', function(event){ // listen to empty cart button
+
+    btnEmpty.addEventListener('click', function(event) { // listen to 'vider le panier' button
         localStorage.removeItem('ordersList'); // remove array with stored orders
-        window.location.href = "cart.html"; // reload the page so changes taken into account
+        window.location.href = 'cart.html'; // reload the page so changes taken into account
     });
 }
 
@@ -95,11 +115,12 @@ function emptyCart(){
 
 // validate order
 
-function validateOrder(){
-    const submit = document.getElementById('submit');
+function validateOrder() {
+    const btnSubmit = document.getElementById('submit');
     storedOrders = JSON.parse(localStorage.getItem('ordersList'));
 
-    submit.addEventListener("click", function (event) {
+    // listen to 'valider ma commande' button
+    btnSubmit.addEventListener('click', function(event) {
         event.preventDefault();
         createContact(); // call function to create object contact
     })
@@ -107,7 +128,8 @@ function validateOrder(){
 
 
 // create object 'contact'
-function createContact(contact){
+
+function createContact(contact) {
     const firstname = document.getElementById('firstname');
     const lastname = document.getElementById('lastname');
     const address = document.getElementById('address');
@@ -122,30 +144,38 @@ function createContact(contact){
 
     console.log(isValidFirstName, isValidLastName, isValidAddress, isValidCity, isValidEmail);
 
-    if (isValidFirstName && isValidLastName && isValidAddress && isValidCity && isValidEmail){
-        let contact = {
-            firstName : firstname.value,
-            lastName : lastname.value,
-            address : address.value,
-            city : city.value,
-            email : email.value 
-        }
+    if(isValidFirstName && isValidLastName && isValidAddress && isValidCity && isValidEmail) {
+        
+        // create contact
+        // declare class ContactToSend
+        class ContactToSend {
+            constructor(firstName, lastName, address, city, email) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.address = address;
+                this.city = city;
+                this.email = email;
+            }
+        }  
+        // create new instance of class ContactToSend  
+        let contact = new ContactToSend(firstname.value, lastname.value, address.value, city.value, email.value);
         console.log(contact);
 
         createProducts(storedOrders, contact); // call function to create products array
-    }else{
+    } else {
         alert('Veuillez remplir tous les champs du formulaire');
     }
 }
 
 
 // create products array
-function createProducts(storedOrders, contact){
+
+function createProducts(storedOrders, contact) {
     storedOrders = JSON.parse(localStorage.getItem('ordersList'));
     console.log(storedOrders);
 
     let products = [];
-    for (storedOrder of storedOrders){
+    for(storedOrder of storedOrders) {
         let productId = storedOrder.cameraId;
         products.push(productId);
     }
@@ -157,12 +187,11 @@ function createProducts(storedOrders, contact){
 
 // create object with contact + products array
 
-function createObjectToSend(contact, products){
+function createObjectToSend(contact, products) {
     let objectToSend = {
         contact,
         products
     }
-    console.log(objectToSend);
 
     send(objectToSend); // call function to send data to server
 }
@@ -170,7 +199,7 @@ function createObjectToSend(contact, products){
 
 // send data to server
 
-function send(objectToSend){
+function send(objectToSend) {
     fetch('http://localhost:3000/api/cameras/order', {
         method : "POST",
         headers : {
@@ -180,30 +209,30 @@ function send(objectToSend){
         body : JSON.stringify(objectToSend)
     })
 
-    .then (function (response) {
+    .then(function(response) {
         if (response.ok) { // if response ok
-            return response.json(); //return response (promise)
+            return response.json(); // return response (promise)
         }
     })
 
-    .then(function (serverResponse){ // resolved promise 
+    .then(function(serverResponse) { // resolved promise
         console.log(serverResponse); // print object
-        storeOrderId(serverResponse); // call function 
+        storeOrderId(serverResponse); // call function
     })
 
-    .catch (function(err){
+    .catch(function(err) {
         console.error('Erreur lors de la requête : ', err); // print error message in console
         const model = document.getElementById('model'); // in div id="model"
         const error = model.appendChild(document.createElement('div')); // create div error
         error.classList.add('error'); // with class="error" to add css style
         error.innerText = 'Une erreur est survenue lors de la réponse serveur.'; // with error message text
-    }); 
+    });
 }
 
 
 // store order id
 
-function storeOrderId(data){
+function storeOrderId(data) {
     console.log(data.orderId);
     localStorage.setItem('orderId', data.orderId);
     window.location = 'confirm.html';
@@ -216,6 +245,7 @@ function storeOrderId(data){
 
 // call functions
 
+continueShopping(); // needs to be called first so works even if cart empty
 createCart();
 emptyCart();
 validateOrder();

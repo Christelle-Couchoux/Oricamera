@@ -1,15 +1,14 @@
 /* color palette */
-/* color variables */
+// color variables
 $color-basic-light: #ffffff;
-$color-basic-medium: #c7cad0; /* not used yet */
 $color-basic-dark: #43444b;
 $color-primary-light: #c8fff3;
 $color-primary-dark: #2c9c97;
 $color-secondary: #a26b00;
-$color-tertiary: #bf0080;/* not used yet */
+$color-tertiary: #bf0080;
 
-/* color maps */
-/* background */
+// color maps
+// background
 $color-bg: (
     bg: $color-basic-dark,
     content: $color-basic-light,
@@ -23,11 +22,12 @@ $color-bg: (
     btn-continue: $color-basic-dark,
     btn-empty: $color-basic-light,
     btn-submit: $color-primary-light,
+    btn-scroll: $color-basic-light,
 );
 
-/* text */
+// text
 $color-txt:(
-    bg: $color-basic-dark,
+    bg: $color-basic-light,
     header-title: $color-basic-light,
     header-nav: $color-basic-dark,
     main: $color-basic-dark,
@@ -39,26 +39,24 @@ $color-txt:(
     btn-continue: $color-basic-light,
     btn-empty: $color-basic-dark,
     btn-submit: $color-basic-dark,
+    btn-scroll: $color-primary-dark,
 );
 
 
 /* fonts */
-/* font family variables */
-/* montserrat */
+// font family variables
+// montserrat
 $montserratregular: ('montserratregular', 'arial', 'sans-serif');
 $montserratbold: ('montserratbold', 'arial', 'sans-serif');
-$montserratlight: ('montserratlight', 'arial', 'sans-serif');
 
-/* lato */
+// lato
 $latoregular: ('latoregular', 'arial', 'sans-serif');
 $latobold: ('latobold', 'arial', 'sans-serif');
 $latolight: ('latolight', 'arial', 'sans-serif');
 $latoitalic: ('latoitalic', 'arial', 'sans-serif');
-$latobold_italic: ('latobold_italic', 'arial', 'sans-serif');
-$latolight_italic: ('latolight_italic', 'arial', 'sans-serif');
 
 
-/* font family map */
+// font family map
 $font-family:(
     h1: $montserratregular,
     h2: $montserratregular,
@@ -90,7 +88,7 @@ $font-family:(
     summary-data: $latoregular,
 );
 
-/* font size map */
+// font size map
 $font-size:(
     h1: 2.5rem,    
     h2: 1.5rem,
@@ -121,5 +119,3 @@ $font-size:(
     summary-label: 1rem,
     summary-data: 1rem,
 );
-
-

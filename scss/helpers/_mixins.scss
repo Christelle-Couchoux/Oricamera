@@ -1,4 +1,5 @@
-/* breaking points */
+// breaking points
+
 @mixin sm{
     @media all and (min-width: 576px){
         @content;
@@ -25,7 +26,8 @@
 
 
 /* style */
-/* links */
+
+// links
 @mixin links-style ($color:map-get($map: $color-txt, $key: main)){ 
     /* links take color from map $color-txt, 
     default is main but can be changed */
@@ -38,44 +40,45 @@
     };
 }
 
-/* lists */
-@mixin list-style{ /* remove list markers and indentation */
+// lists
+@mixin list-style{ // remove list markers and indentation
     list-style-type: none;
     padding: 0; 
     margin: 0; 
 }
 
-/* font family and size */
-@mixin font-family-size($element){ /* ex: @include font-family-size (h1) */
+// font family and size 
+@mixin font-family-size($element){ // ex: @include font-family-size (h1)
     font-family: map-get($map: $font-family, $key: $element);
     font-size: map-get($map: $font-size, $key: $element);
 }
 
-/* background and text colors */
-@mixin color-bg-txt($element){ /* ex: @include color-bg-txt (header) */
+// background and text colors
+@mixin color-bg-txt($element){ // ex: @include color-bg-txt (header)
     background-color: map-get($map: $color-bg, $key: $element);
     color: map-get($map: $color-txt, $key: $element);
 }
 
-/* container size */
+// container size
 @mixin size($width, $height: $width){
-    /* default is square */
+    // default is square
     width: $width;
     height: $height;
 }
 
-/* layout */
+// layout
+
 @mixin flexbox($direction, $wrap, $justify-content, $align-items){
     display: flex;
-    flex-direction: $direction; /* default is row */
-    flex-wrap: $wrap; /* default is 'nowrap' */
-    justify-content: $justify-content; /* default is 'flex-start' */
+    flex-direction: $direction; // default is row
+    flex-wrap: $wrap; // default is 'nowrap'
+    justify-content: $justify-content; // default is 'flex-start'
     align-items:$align-items;
 }
 
 @mixin position($position, $top, $right, $bottom, $left){
     position: $position;
-    top: $top; /* default value is 'auto' */
+    top: $top; // default value is 'auto'
     right: $right;
     bottom: $bottom;
     left: $left;

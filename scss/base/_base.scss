@@ -1,11 +1,14 @@
 /* general display */
-*{ /* reset margin and padding */
+
+// reset margin and padding
+*{
     box-sizing:border-box; 
     margin: 0;
     padding: 0;
 }
 
-body{ /* define minimum/maximum width */
+// define minimum/maximum width
+body{
     min-width: 375px;
     max-width: 1920px;
     margin: auto; 
@@ -15,17 +18,28 @@ i{
     display: inline-block;
 }
 
-/* dark grey background */
+// dark grey background
 #bg{
     @include color-bg-txt(bg); 
 }
 
-/* margin on content div so we see background on the sides */
+// margin on content div so we see background on the sides
 #content{
     @include color-bg-txt(content);
     margin: auto;
     
     @include md{
         width: 80%;
+    }
+}
+
+// main style
+main{
+    @include links-style(map-get($color-txt, main));
+    @include color-bg-txt(main);
+    padding: 0 20px 0 20px;
+
+    @include md{
+        padding: 0 30px 0 30px;
     }
 }

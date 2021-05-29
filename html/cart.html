@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -10,38 +11,43 @@
     <meta name="description" content="Oricamera, appareils photo vintage. Contenu de votre panier. 
     (OpenClassrooms Développeur Web Projet 5)">
 
-    <link rel="canonical" href="https://christelle-couchoux.github.io/Oricamera/html/cart.html">
     <link rel="icon" href="../favicon.ico" />
-    <!-- minify css at the end -->
     <link rel="stylesheet" type="text/css" href="../css/prefixed/style.css"/> 
 
     <script src="https://kit.fontawesome.com/c508233717.js" crossorigin="anonymous"></script>
+
+    <!-- js scripts -->
+    <script src="../js/cart.js" defer></script>
+    <script src="../js/components/scroll-to-top.js" defer></script>
 
 </head>
 
 <body>
 
     <div id="bg">
+
         <div id="content">
 
             <header>
                 <div id="header-title">
-                    <a href="index.html"><h1>Oricamera</h1></a>
+                    <a href="index.html" title ="Accueil"><h1>Oricamera</h1></a>
                     <p>Le site Orinoco dédié aux appareils photo vintage.</p>
                 </div>
                 <nav id="header-nav">
                     <ul>
-                        <a href="index.html"><li>Produits</li></a>
-                        <a href="cart.html"><li class="active">Panier</li></a>
+                        <li><a href="index.html" title ="Accueil"><p>Produits</p></a></li>
+                        <li class="active"><a href="cart.html" title ="Panier"><p>Panier</p></a></li>
                     </ul>
                 </nav>
             </header>
 
             <main>
+
                 <section id="cart">
+
                     <h2>Panier</h2>
                     <p>
-                        <svg class="divider" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="divider" xmlns="http://www.w3.org/2000/svg"
  width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
  preserveAspectRatio="xMidYMid meet">
 <metadata>
@@ -126,6 +132,7 @@ l-264 0 11 -35z"/>
                     <h3>Vérifiez et validez votre commande&nbsp;!</h3>
 
                     <div id="table">
+
                         <table>
                             <thead>
                                 <tr>
@@ -149,25 +156,23 @@ l-264 0 11 -35z"/>
                             </tfoot>
                         </table>
                     
-                        <a href="index.html">
-                            <div class="cart__btn cart__btn--continue">
-                                <input type="button" value="Continuer mes achats"></input>
-                            </div>
-                        </a>
+                        <div id="continue" class="cart__btn cart__btn--continue">
+                            <input type="button" value="Continuer mes achats">
+                        </div>
+
 
                         <div id="empty" class="cart__btn cart__btn--empty">
-                            <input type="button" value="Vider le panier"></input>
+                            <input type="button" value="Vider le panier">
                         </div>
 
                     </div>
-                </section>
 
-                <section id="order">
                     <p class="order-p1">Pour valider votre commande, veuillez remplir le formulaire ci-dessous :</p>
                     <p class="order-p2">(Tous les champs sont obligatoires.)</p>
 
                     <div id="order-form">
-                        <form method="POST" action="confirm.html">
+
+                        <form>
                             <div>
                                 <label for="firstname">Prénom : </label>
                                 <br/>
@@ -200,11 +205,13 @@ l-264 0 11 -35z"/>
                         </form>
                     
                         <div class="cart__btn cart__btn--submit">
-                            <input type="submit" value="Valider la commande" id="submit" ></input>
+                            <input type="submit" value="Valider la commande" id="submit">
                         </div>
 
                     </div>
+
                 </section>
+
             </main>
 
             <footer>
@@ -237,10 +244,12 @@ l-264 0 11 -35z"/>
             </footer>
 
         </div>
-    </div>
 
-    <!-- cart.js script -->
-    <script src="../js/cart.js"></script>
+        <button id="scroll-to-top">
+            <i class="fas fa-chevron-up" aria-label="Retour en haut de la page" role="img"></i>
+        </button>
+        
+    </div>
 
 </body>
 

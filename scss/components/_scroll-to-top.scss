@@ -1,0 +1,22 @@
+// scroll-to-top-button 
+
+#scroll-to-top{
+    z-index: 99; // above everything
+    display: none; // hidden by default
+    font-size: 1.3rem;
+    @include color-bg-txt(btn-scroll);
+    @include position(fixed, auto, 20px, 20px, auto);
+    @include size(40px);
+    border: solid 2px $color-primary-dark;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 200ms ease-in-out;
+
+    &:hover{
+        opacity: 1;
+    }
+
+    .fas{
+        transform: scale(1,1.5);
+    }    
+}

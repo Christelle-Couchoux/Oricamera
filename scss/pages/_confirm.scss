@@ -1,7 +1,7 @@
 #confirm{
+    max-width: 1000px;
     margin: auto;
     text-align: center;
-    max-width: 1000px;
 
     h3{
         border-bottom: solid 1px $color-primary-dark;
@@ -13,29 +13,28 @@
 }
 
 #summary{
-    border: solid 2px $color-secondary;
     @include size(87%, auto);
+    border: solid 2px $color-secondary;
+    margin: auto;
+    margin-bottom: 50px;
+    padding: 10px;
+    text-align: left;
 
     @include sm{
         @include size(500px, auto);
     }
 
-    padding: 10px;
-    margin: auto;
-    margin-bottom: 50px;
-    text-align: left;
-
     p:first-child{
         @include font-family-size(summary);
-        text-transform: uppercase;
         padding: 10px 10px 20px 10px;
+        text-transform: uppercase;
         text-align: center;
     }
 
     .summary-label{
         @include font-family-size(summary-label);
-        text-transform: uppercase;
         padding: 10px 10px 5px 10px;
+        text-transform: uppercase;
     }
 
     .summary-data{
@@ -43,9 +42,3 @@
         padding: 0 10px 10px 10px;
     }
 }
-
-
-
-
-
-

@@ -1,17 +1,7 @@
-main{
-    @include color-bg-txt(main);
-    padding: 0 20px 0 20px;
-
-    @include md{
-        padding: 0 30px 0 30px;
-    }
-}
-
 #product{
     margin: auto;
     text-align: center;
 }
-
 
 #model{
     @include flexbox(column, nowrap, space-around, center);
@@ -20,9 +10,9 @@ main{
 
 .info{
     @include flexbox(column, nowrap, space-between, center);
+    max-width: 1000px;
     border-top: solid 1px $color-primary-dark;
     border-bottom: solid 1px $color-primary-dark;
-    max-width: 1000px;
 
     &__name{
         padding: 20px;
@@ -51,21 +41,21 @@ main{
 
 .form{
     @include links-style(map-get($color-txt, btn));
-    @include flexbox(column, nowrap, space-between, left);
+    @include flexbox(column, nowrap, space-between, flex-start);
     @include size(87%, auto);
     max-width: 870px;
 
     label{
         @include font-family-size(form-label);
+        width: 100%;
         text-transform: uppercase;
         text-align: left;
-        width: 100%;
     }
 
     div{
         width: 100%;
-        text-align: left;
         margin: auto;
+        text-align: left;
     }
 
     &__lenses{
@@ -73,18 +63,18 @@ main{
     }
 
     select{
-        @include size(100%, 30px);
         @include font-family-size(form-choice);
-        border: solid 1px $color-basic-dark; 
+        @include size(100%, 30px);
         margin: 5px 0 0 0;       
+        border: solid 1px $color-basic-dark; 
     }
 
     input{
-        @include size(100%, 30px);
         @include font-family-size(form-choice);
+        @include size(100%, 30px);
+        margin: 5px 0 0 0;       
         border: solid 1px $color-basic-dark;
         text-align: center;
-        margin: 5px 0 0 0;       
     }
 
     &__btn{
@@ -92,14 +82,15 @@ main{
 
         input{
             display: block;
-            @include flexbox(row, nowrap, center, center);
-            @include color-bg-txt(btn-addtocart);
             @include font-family-size(btn-addtocart);
+            @include color-bg-txt(btn-addtocart);
+            @include flexbox(row, nowrap, center, center);
             @include size(268px, auto);
-            padding: 15px;
             margin: auto;
-            text-transform: uppercase;
+            padding: 15px;
             border: none;
+            text-transform: uppercase;
+            transition: all 200ms ease-in-out;
 
             &:hover{
                 background-color: $color-secondary;

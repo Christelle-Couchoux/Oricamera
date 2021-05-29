@@ -1,19 +1,20 @@
-/* font less bold in Firefox */
+// font less bold in Firefox
 html{
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
-  }
+}
   
-  @-moz-document url-prefix(){
+@-moz-document url-prefix(){
     body {
-      font-weight: lighter !important;
+        font-weight: lighter !important;
     }
-  }
+}
 
 
 /* define fonts */
-/* Montserrat */
+
+// Montserrat 
 @font-face {
     font-family: 'montserratregular';
     src: url('../../fonts/montserrat/montserrat-regular-webfont.eot');
@@ -38,20 +39,8 @@ html{
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'montserratlight';
-    src: url('../../fonts/montserrat/montserrat-light-webfont.eot');
-    src: url('../../fonts/montserrat/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/montserrat/montserrat-light-webfont.woff2') format('woff2'),
-         url('../../fonts/montserrat/montserrat-light-webfont.woff') format('woff'),
-         url('../../fonts/montserrat/montserrat-light-webfont.ttf') format('truetype'),
-         url('../../fonts/montserrat/montserrat-light-webfont.svg#montserratlight') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
-
-/* Lato */
+// Lato
 @font-face {
     font-family: 'latoregular';
     src: url('../../fonts/lato/lato-regular-webfont.eot');
@@ -100,35 +89,10 @@ html{
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'latobold_italic';
-    src: url('../../fonts/lato/lato-bolditalic-webfont.eot');
-    src: url('../../fonts/lato/lato-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/lato/lato-bolditalic-webfont.woff2') format('woff2'),
-         url('../../fonts/lato/lato-bolditalic-webfont.woff') format('woff'),
-         url('../../fonts/lato/lato-bolditalic-webfont.ttf') format('truetype'),
-         url('../../fonts/lato/lato-bolditalic-webfont.svg#latobold_italic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'latolight_italic';
-    src: url('../../fonts/lato/lato-lightitalic-webfont.eot');
-    src: url('../../fonts/lato/lato-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/lato/lato-lightitalic-webfont.woff2') format('woff2'),
-         url('../../fonts/lato/lato-lightitalic-webfont.woff') format('woff'),
-         url('../../fonts/lato/lato-lightitalic-webfont.ttf') format('truetype'),
-         url('../../fonts/lato/lato-lightitalic-webfont.svg#latolight_italic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 
 /*  typography */
 
-/* h1, h2, h3 */
+// titles
 
 h1{
     @include font-family-size(h1);
@@ -136,9 +100,9 @@ h1{
 
 h2{
     @include font-family-size(h2);
+    padding: 40px 20px 30px 20px;
     text-transform: uppercase;
     text-align: center;
-    padding: 40px 20px 30px 20px;
 }
 
 .divider{
@@ -149,7 +113,6 @@ h2{
     path{
         fill: map-get($map: $color-txt, $key: divider);
     }
-
 }
 
 h3{
@@ -161,8 +124,3 @@ h3{
 h4{
     @include font-family-size(h4);
 }
-
-
-
-
-

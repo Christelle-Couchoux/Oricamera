@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -10,29 +11,32 @@
     <meta name="description" content="Oricamera est le site d'Orinoco dédié aux appareils photo vintage. 
     (OpenClassrooms Développeur Web Projet 5)">
 
-    <link rel="canonical" href="https://christelle-couchoux.github.io/Oricamera/html/index.html">
     <link rel="icon" href="../favicon.ico" />
-    <!-- minify css at the end -->
-    <link rel="stylesheet" type="text/css" href="../css/prefixed/style.css"/> 
+    <link rel="stylesheet" type="text/css" href="../css/prefixed/style.css"/>
 
     <script src="https://kit.fontawesome.com/c508233717.js" crossorigin="anonymous"></script>
+
+    <!-- js scripts -->
+    <script src="../js/index.js" defer></script>
+    <script src="../js/components/scroll-to-top.js" defer></script>
 
 </head>
 
 <body>
 
     <div id="bg">
+
         <div id="content">
 
             <header>
                 <div id="header-title">
-                    <a href="index.html"><h1>Oricamera</h1></a>
+                    <a href="index.html" title ="Accueil"><h1>Oricamera</h1></a>
                     <p>Le site Orinoco dédié aux appareils photo vintage.</p>
                 </div>
                 <nav id="header-nav">
                     <ul>
-                        <a href="index.html"><li class="active">Produits</li></a>
-                        <a href="cart.html"><li>Panier</li></a>
+                        <li class="active"><a href="index.html" title ="Accueil"><p>Produits</p></a></li>
+                        <li><a href="cart.html" title ="Panier"><p>Panier</p></a></li>
                     </ul>
                 </nav>
             </header>
@@ -42,7 +46,7 @@
 
                     <h2>Appareils photo vintage</h2>
                     <p>
-                        <svg class="divider" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="divider" xmlns="http://www.w3.org/2000/svg"
  width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
  preserveAspectRatio="xMidYMid meet">
 <metadata>
@@ -124,7 +128,7 @@ l-264 0 11 -35z"/>
 </g>
                         </svg>
                     </p>
-                    <h3>Découvrez notre sélection&nbsp;!</h3>
+                    <h3>Découvrez nos produits&nbsp;!</h3>
 
                     <div id="items">
                         <!-- products list created with js -->
@@ -163,10 +167,12 @@ l-264 0 11 -35z"/>
             </footer>
 
         </div>
-    </div>
 
-    <!-- index.js script -->
-    <script src="../js/index.js"></script>
+        <button id="scroll-to-top">
+            <i class="fas fa-chevron-up" aria-label="Retour en haut de la page" role="img"></i>
+        </button>
+
+    </div>
 
 </body>
 
