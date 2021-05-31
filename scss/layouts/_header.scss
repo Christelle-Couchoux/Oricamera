@@ -1,4 +1,4 @@
-header{
+header {
     @include links-style(map-get($color-txt, header-title));
     @include color-bg-txt(header-title);
     @include flexbox(column, nowrap, space-around, center);
@@ -6,13 +6,39 @@ header{
     padding: 40px 0 0 0;
 }
 
-#header-nav{
+#header-title {
+    @include flexbox(column, nowrap, space-around, center);
+
+    h1 {
+        color: $color-basic-light;
+        @include size(100%, auto);
+        margin: auto;
+        padding: 20px 20px 15px 20px;
+        border: solid 3px $color-basic-light;
+        text-transform: uppercase;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            padding: 18px 18px 13px 18px;
+            border: solid 5px $color-basic-light;
+        }
+    }
+
+    p {
+        @include font-family-size(header-p);
+        @include size(100%, auto);
+        margin: auto;
+        padding: 25px 0 40px 0;
+    }
+}
+
+#header-nav {
     @include links-style(map-get($color-txt, header-nav));
     @include font-family-size(header-nav);
     @include color-bg-txt(header-nav);
     @include size (100%, auto);
-    
-    ul{
+
+    ul {
         @include list-style;
         @include flexbox(row, nowrap, space-around, center);
 
@@ -21,66 +47,40 @@ header{
         }
     }
 
-    li{
-        @include size(50%, auto); 
+    li {
+        @include size(50%, auto);
         text-transform: uppercase;
         text-align: center;
         transition: all 200ms ease-in-out;
-        
-        @include md{
-            @include size(150px, auto)
-        } 
 
-        &:hover{
+        @include md {
+            @include size(150px, auto);
+        }
+
+        &:hover {
             background-color: $color-basic-light;
             text-decoration: underline;
             text-underline-offset: 5px;
             text-decoration-thickness: 2px;
             cursor: pointer;
 
-            a{
+            a {
                 color: $color-primary-dark;
             }
-        }  
+        }
 
-        p{
+        p {
             @include size(100%, auto);
             @include flexbox(row, nowrap, center, center);
             padding: 10px 30px 10px 30px;
 
-            @include md{
-                @include size(150px, auto)
-            }  
+            @include md {
+                @include size(150px, auto);
+            }
         }
     }
 
-    .active{
+    .active {
         background-color: $color-basic-light; // for pages index and cart
-    }
-}
-
-#header-title{
-    @include flexbox(column, nowrap, space-around, center);
-
-    h1{
-        color: $color-basic-light;
-        @include size(100%, auto);
-        margin: auto;
-        padding: 20px 20px 15px 20px;
-        border: solid 3px $color-basic-light;
-        text-transform: uppercase; 
-        transition: all 200ms ease-in-out;
-
-        &:hover{
-            padding: 18px 18px 13px 18px;
-            border: solid 5px $color-basic-light;
-        }
-    }
-
-    p{
-        @include font-family-size(header-p);
-        @include size(100%, auto);
-        margin: auto;
-        padding: 25px 0 40px 0;
     }
 }

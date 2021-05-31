@@ -1,6 +1,6 @@
-// scroll-to-top-button 
+// scroll-to-top-button
 
-#scroll-to-top{
+#scroll-to-top {
     z-index: 99; // above everything
     display: none; // hidden by default
     font-size: 1.3rem;
@@ -18,5 +18,6 @@
 
     .fas{
         transform: scale(1,1.5);
-    }    
+        padding: 3px 0 0 0;
+    }
 }

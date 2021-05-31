@@ -1,8 +1,6 @@
-/* helpers */
 /* color palette */
 /* fonts */
 /* style */
-/* base */
 /* general display */
 * {
   box-sizing: border-box;
@@ -21,12 +19,12 @@ i {
 }
 
 #bg {
-  background-color: #43444b;
-  color: #ffffff;
+  background-color: #43444c;
+  color: white;
 }
 
 #content {
-  background-color: #ffffff;
+  background-color: white;
   margin: auto;
 }
 @media all and (min-width: 768px) {
@@ -38,16 +36,16 @@ i {
 main {
   /* links take color from map $color-txt, 
   default is main but can be changed */
-  background-color: #ffffff;
-  color: #43444b;
+  background-color: white;
+  color: #43444c;
   padding: 0 20px 0 20px;
 }
 main a {
   text-decoration: none;
-  color: #43444b;
+  color: #43444c;
 }
 main a:visited, main a[href^=mailto] {
-  color: #43444b;
+  color: #43444c;
 }
 @media all and (min-width: 768px) {
   main {
@@ -130,7 +128,7 @@ h2 {
   text-align: center;
 }
 .divider path {
-  fill: #a26b00;
+  fill: #a36d00;
 }
 
 h3 {
@@ -145,12 +143,11 @@ h4 {
   font-size: 1.2rem;
 }
 
-/* components */
 .error {
   font-family: "montserratbold", "arial", "sans-serif";
   font-size: 1rem;
-  background-color: #ffffff;
-  color: #bf0080;
+  background-color: white;
+  color: #bd007e;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -160,15 +157,15 @@ h4 {
   height: auto;
   margin: auto;
   padding: 5px 10px 5px 10px;
-  border: solid 3px #bf0080;
+  border: solid 3px #bd007e;
 }
 
 #scroll-to-top {
   z-index: 99;
   display: none;
   font-size: 1.3rem;
-  background-color: #ffffff;
-  color: #2c9c97;
+  background-color: white;
+  color: #2c9b96;
   position: fixed;
   top: auto;
   right: 20px;
@@ -176,7 +173,7 @@ h4 {
   left: auto;
   width: 40px;
   height: 40px;
-  border: solid 2px #2c9c97;
+  border: solid 2px #2c9b96;
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 200ms ease-in-out;
@@ -186,14 +183,14 @@ h4 {
 }
 #scroll-to-top .fas {
   transform: scale(1, 1.5);
+  padding: 3px 0 0 0;
 }
 
-/* layouts */
 header {
   /* links take color from map $color-txt, 
   default is main but can be changed */
-  background-color: #43444b;
-  color: #ffffff;
+  background-color: #43444c;
+  color: white;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -205,10 +202,40 @@ header {
 }
 header a {
   text-decoration: none;
-  color: #ffffff;
+  color: white;
 }
 header a:visited, header a[href^=mailto] {
-  color: #ffffff;
+  color: white;
+}
+
+#header-title {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+#header-title h1 {
+  color: white;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 20px 20px 15px 20px;
+  border: solid 3px white;
+  text-transform: uppercase;
+  transition: all 200ms ease-in-out;
+}
+#header-title h1:hover {
+  padding: 18px 18px 13px 18px;
+  border: solid 5px white;
+}
+#header-title p {
+  font-family: "latolight", "arial", "sans-serif";
+  font-size: 1rem;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 25px 0 40px 0;
 }
 
 #header-nav {
@@ -216,17 +243,17 @@ header a:visited, header a[href^=mailto] {
   default is main but can be changed */
   font-family: "montserratregular", "arial", "sans-serif";
   font-size: 1rem;
-  background-color: #c8fff3;
-  color: #43444b;
+  background-color: #c7fff3;
+  color: #43444c;
   width: 100%;
   height: auto;
 }
 #header-nav a {
   text-decoration: none;
-  color: #43444b;
+  color: #43444c;
 }
 #header-nav a:visited, #header-nav a[href^=mailto] {
-  color: #43444b;
+  color: #43444c;
 }
 #header-nav ul {
   list-style-type: none;
@@ -261,14 +288,14 @@ header a:visited, header a[href^=mailto] {
   }
 }
 #header-nav li:hover {
-  background-color: #ffffff;
+  background-color: white;
   text-decoration: underline;
   text-underline-offset: 5px;
   text-decoration-thickness: 2px;
   cursor: pointer;
 }
 #header-nav li:hover a {
-  color: #2c9c97;
+  color: #2c9b96;
 }
 #header-nav li p {
   width: 100%;
@@ -287,66 +314,35 @@ header a:visited, header a[href^=mailto] {
   }
 }
 #header-nav .active {
-  background-color: #ffffff;
-}
-
-#header-title {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: center;
-}
-#header-title h1 {
-  color: #ffffff;
-  width: 100%;
-  height: auto;
-  margin: auto;
-  padding: 20px 20px 15px 20px;
-  border: solid 3px #ffffff;
-  text-transform: uppercase;
-  transition: all 200ms ease-in-out;
-}
-#header-title h1:hover {
-  padding: 18px 18px 13px 18px;
-  border: solid 5px #ffffff;
-}
-#header-title p {
-  font-family: "latolight", "arial", "sans-serif";
-  font-size: 1rem;
-  width: 100%;
-  height: auto;
-  margin: auto;
-  padding: 25px 0 40px 0;
+  background-color: white;
 }
 
 footer {
   /* links take color from map $color-txt, 
   default is main but can be changed */
-  background-color: #c8fff3;
-  color: #43444b;
+  background-color: #c7fff3;
+  color: #43444c;
   width: 100%;
   height: auto;
   padding: 20px 20px 20px 20px;
+  text-align: center;
 }
 footer a {
   text-decoration: none;
-  color: #43444b;
+  color: #43444c;
 }
 footer a:visited, footer a[href^=mailto] {
-  color: #43444b;
+  color: #43444c;
 }
 footer p:first-child {
   font-family: "latobold", "arial", "sans-serif";
   font-size: 1.1rem;
   padding: 10px 0 5px 0;
-  text-align: center;
 }
 footer p:nth-child(2) {
   font-family: "latoregular", "arial", "sans-serif";
   font-size: 0.95rem;
   padding: 0 0 20px 0;
-  text-align: center;
 }
 footer ul {
   list-style-type: none;
@@ -359,7 +355,6 @@ footer ul {
   align-items: center;
   max-width: 1000px;
   margin: auto;
-  text-align: center;
 }
 @media all and (min-width: 768px) {
   footer ul {
@@ -376,11 +371,10 @@ footer ul i {
   transition: all 200ms ease-in-out;
 }
 footer ul i:hover {
-  color: #2c9c97;
+  color: #2c9b96;
   transform: scale(1.5);
 }
 
-/* pages */
 #products-list {
   margin: auto;
   text-align: center;
@@ -415,7 +409,7 @@ footer ul i:hover {
   align-items: center;
   max-width: 1000px;
   margin: 0 0 20px 0;
-  border-top: solid 1px #2c9c97;
+  border-top: solid 1px #2c9b96;
 }
 .item a {
   text-decoration: none;
@@ -439,11 +433,10 @@ footer ul i:hover {
   margin: 5px 0 0 0;
 }
 .item__btn input {
-  display: block;
   font-family: "montserratregular", "arial", "sans-serif";
   font-size: 0.8rem;
-  background-color: #ffffff;
-  color: #43444b;
+  background-color: white;
+  color: #43444c;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -452,20 +445,21 @@ footer ul i:hover {
   width: 200px;
   height: 25px;
   padding: 1px;
-  border: solid 1px #43444b;
+  border: solid 1px #43444c;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 200ms ease-in-out;
 }
 .item__btn input:hover {
-  color: #a26b00;
+  color: #a36d00;
   padding: 0;
-  border: solid 2px #a26b00;
+  border: solid 2px #a36d00;
 }
 
 #product {
   margin: auto;
   text-align: center;
+  max-width: 1000px;
 }
 
 #model {
@@ -483,9 +477,8 @@ footer ul i:hover {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  max-width: 1000px;
-  border-top: solid 1px #2c9c97;
-  border-bottom: solid 1px #2c9c97;
+  border-top: solid 1px #2c9b96;
+  border-bottom: solid 1px #2c9b96;
 }
 .info__name {
   padding: 20px;
@@ -513,8 +506,6 @@ footer ul i:hover {
 }
 
 .form {
-  /* links take color from map $color-txt, 
-  default is main but can be changed */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -522,22 +513,17 @@ footer ul i:hover {
   align-items: flex-start;
   width: 87%;
   height: auto;
-  max-width: 870px;
 }
-.form a {
-  text-decoration: none;
+.form div {
+  width: 100%;
+  margin: auto;
+  text-align: left;
 }
 .form label {
   font-family: "montserratbold", "arial", "sans-serif";
   font-size: 0.9rem;
   width: 100%;
   text-transform: uppercase;
-  text-align: left;
-}
-.form div {
-  width: 100%;
-  margin: auto;
-  text-align: left;
 }
 .form__lenses {
   padding: 30px 0 15px 0;
@@ -548,7 +534,7 @@ footer ul i:hover {
   width: 100%;
   height: 30px;
   margin: 5px 0 0 0;
-  border: solid 1px #43444b;
+  border: solid 1px #43444c;
 }
 .form input {
   font-family: "latoregular", "arial", "sans-serif";
@@ -556,18 +542,22 @@ footer ul i:hover {
   width: 100%;
   height: 30px;
   margin: 5px 0 0 0;
-  border: solid 1px #43444b;
+  border: solid 1px #43444c;
   text-align: center;
 }
 .form__btn {
+  /* links take color from map $color-txt, 
+  default is main but can be changed */
   padding: 50px 0 50px 0;
 }
+.form__btn a {
+  text-decoration: none;
+}
 .form__btn input {
-  display: block;
   font-family: "montserratregular", "arial", "sans-serif";
   font-size: 1rem;
-  background-color: #43444b;
-  color: #ffffff;
+  background-color: #43444c;
+  color: white;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -577,12 +567,13 @@ footer ul i:hover {
   height: auto;
   margin: auto;
   padding: 15px;
-  border: none;
+  border: solid 2px #43444c;
   text-transform: uppercase;
   transition: all 200ms ease-in-out;
 }
 .form__btn input:hover {
-  background-color: #a26b00;
+  background-color: #a36d00;
+  border: solid 2px #a36d00;
   cursor: pointer;
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -595,13 +586,13 @@ footer ul i:hover {
   text-align: center;
 }
 #cart h3 {
-  border-bottom: solid 1px #2c9c97;
+  border-bottom: solid 1px #2c9b96;
 }
 #cart .order-p1 {
   font-family: "latoregular", "arial", "sans-serif";
   font-size: 1.2rem;
   padding: 30px 0 0 0;
-  border-top: solid 1px #2c9c97;
+  border-top: solid 1px #2c9b96;
 }
 #cart .order-p2 {
   font-family: "latoregular", "arial", "sans-serif";
@@ -624,18 +615,21 @@ footer ul i:hover {
     height: auto;
   }
 }
+#table .error {
+  margin: 30px 0 0 0;
+}
 
 table {
   width: 100%;
   border-collapse: collapse;
-  border: solid 2px #43444b;
+  border: solid 2px #43444c;
   border-spacing: 0;
   text-align: center;
 }
 table th {
   width: auto;
   height: 30px;
-  border: 1px solid #43444b;
+  border: 1px solid #43444c;
 }
 @media all and (min-width: 576px) {
   table th {
@@ -644,15 +638,7 @@ table th {
   }
 }
 table td {
-  width: auto;
-  height: 30px;
-  border: 1px solid #43444b;
-}
-@media all and (min-width: 576px) {
-  table td {
-    width: 20%;
-    height: 30px;
-  }
+  border: 1px solid #43444c;
 }
 table thead {
   font-family: "montserratbold", "arial", "sans-serif";
@@ -676,7 +662,7 @@ table tbody {
 table tfoot {
   font-family: "latobold", "arial", "sans-serif";
   font-size: 0.9rem;
-  background-color: #c8fff3;
+  background-color: #c7fff3;
 }
 @media all and (min-width: 576px) {
   table tfoot {
@@ -729,23 +715,25 @@ table tfoot {
   text-transform: uppercase;
   transition: all 200ms ease-in-out;
 }
+.cart__btn input:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
 .cart__btn--continue {
   padding: 30px 0 10px 0;
 }
 .cart__btn--continue input {
   font-family: "montserratregular", "arial", "sans-serif";
   font-size: 1rem;
-  background-color: #43444b;
-  color: #ffffff;
-  border: solid 2px #43444b;
+  background-color: #43444c;
+  color: white;
+  border: solid 2px #43444c;
 }
 .cart__btn--continue input:hover {
-  background-color: #a26b00;
-  border: solid 2px #a26b00;
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 5px;
+  background-color: #a36d00;
+  border: solid 2px #a36d00;
 }
 .cart__btn--empty {
   padding: 10px 0 30px 0;
@@ -753,17 +741,13 @@ table tfoot {
 .cart__btn--empty input {
   font-family: "montserratregular", "arial", "sans-serif";
   font-size: 1rem;
-  background-color: #ffffff;
-  color: #43444b;
-  border: solid 2px #43444b;
+  background-color: white;
+  color: #43444c;
+  border: solid 2px #43444c;
 }
 .cart__btn--empty input:hover {
-  color: #a26b00;
-  border: solid 2px #a26b00;
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 5px;
+  color: #a36d00;
+  border: solid 2px #a36d00;
 }
 .cart__btn--submit {
   margin: auto;
@@ -775,26 +759,15 @@ table tfoot {
   display: block;
   font-family: "montserratbold", "arial", "sans-serif";
   font-size: 1rem;
-  background-color: #c8fff3;
-  color: #43444b;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+  background-color: #c7fff3;
+  color: #43444c;
   width: 268px;
   height: auto;
-  margin: auto;
   padding: 15px;
-  border: solid 2px #c8fff3;
-  text-align: center;
+  border: solid 2px #c7fff3;
 }
 .cart__btn--submit #submit:hover {
-  color: #2c9c97;
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 5px;
+  color: #2c9b96;
 }
 
 #order-form {
@@ -831,7 +804,7 @@ table tfoot {
   text-align: center;
 }
 #confirm h3 {
-  border-bottom: solid 1px #2c9c97;
+  border-bottom: solid 1px #2c9b96;
 }
 #confirm h4 {
   padding: 40px 0 40px 0;
@@ -840,7 +813,7 @@ table tfoot {
 #summary {
   width: 87%;
   height: auto;
-  border: solid 2px #a26b00;
+  border: solid 2px #a36d00;
   margin: auto;
   margin-bottom: 50px;
   padding: 10px;

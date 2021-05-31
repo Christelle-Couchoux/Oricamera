@@ -1,38 +1,36 @@
-footer{
+footer {
     @include links-style(map-get($color-txt, footer));
     @include color-bg-txt(footer);
     @include size(100%, auto);
     padding: 20px 20px 20px 20px;
+    text-align: center;
 
-    p:first-child{
+    p:first-child {
         @include font-family-size(footer-p1);
         padding: 10px 0 5px 0;
-        text-align: center;
     }
 
-    p:nth-child(2){
+    p:nth-child(2) {
         @include font-family-size(footer-p2);
         padding: 0 0 20px 0;
-        text-align: center;
     }
 
-    ul{
+    ul {
         @include list-style;
         @include flexbox(column, nowrap, space-around, center);
         max-width: 1000px;
         margin:auto;
-        text-align: center;
 
-        @include md{
+        @include md {
             @include flexbox(row, nowrap, space-around, center);
-        };
+        }
 
-        i{
+        i {
             font-size: 1.2rem;
             padding: 10px;
             transition: all 200ms ease-in-out;
 
-            &:hover{
+            &:hover {
                 color: $color-primary-dark;
                 transform: scale(1.5);
             }

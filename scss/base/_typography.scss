@@ -1,11 +1,11 @@
 // font less bold in Firefox
-html{
+html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
 }
-  
-@-moz-document url-prefix(){
+
+@-moz-document url-prefix() {
     body {
         font-weight: lighter !important;
     }
@@ -14,7 +14,7 @@ html{
 
 /* define fonts */
 
-// Montserrat 
+// Montserrat
 @font-face {
     font-family: 'montserratregular';
     src: url('../../fonts/montserrat/montserrat-regular-webfont.eot');
@@ -94,33 +94,33 @@ html{
 
 // titles
 
-h1{
+h1 {
     @include font-family-size(h1);
 }
 
-h2{
+h2 {
     @include font-family-size(h2);
     padding: 40px 20px 30px 20px;
     text-transform: uppercase;
     text-align: center;
 }
 
-.divider{
+.divider {
     @include size(120px, 60px);
     margin: -25px 0;
     text-align: center;
 
-    path{
+    path {
         fill: map-get($map: $color-txt, $key: divider);
     }
 }
 
-h3{
+h3 {
     @include font-family-size(h3);
     padding: 30px 20px 40px 20px;
     text-align: center;
 }
 
-h4{
+h4 {
     @include font-family-size(h4);
 }

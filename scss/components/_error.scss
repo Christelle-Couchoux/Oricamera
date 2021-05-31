@@ -1,6 +1,6 @@
 // error messages
 
-.error{
+.error {
     @include font-family-size(error);
     @include color-bg-txt(error);
     @include flexbox(row, nowrap, center, center);

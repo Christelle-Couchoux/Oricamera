@@ -47,30 +47,44 @@ function createList(products) {
         img.setAttribute('src', product.imageUrl); // with attribute src="url"
         img.setAttribute('alt', 'Photo du modèle ' + product.name); // with attibute alt="Photo du modèle xxx"
 
-        // create url for product.html page for specific product
-        let indexUrl = new URL(window.location.href); // get current url
-        console.log(indexUrl);
-        let indexUrlString = indexUrl.toString(); // convert to string
-        console.log(indexUrlString);
-        let productUrlString = indexUrlString.replace('index', 'product'); // change index to product
-        console.log(productUrlString);
-        let productUrl = new URL(productUrlString); // convert back to url
-        console.log(productUrl);
-        productUrl.searchParams.set('id', product._id); // add the parameter 'id', with the product id as value
-        console.log(productUrl);
-
-        // create link a
-        const a = divItem.appendChild(document.createElement('a')); // create link in div item
-        a.setAttribute('href', productUrl);
-        a.setAttribute('title', 'Page du modèle ' + product.name); // with attibute Title="Page du modèle xxx"
-
         // create div item__btn
-        const btn = a.appendChild(document.createElement('div')); // create div in a
+        const btn = divItem.appendChild(document.createElement('div')); // create div in div item
         btn.classList.add('item__btn'); // with class="item__btn"
+        btn.setAttribute('id', 'see-model' + product._id) // with id="see-modelxxx"
 
-        // create p
+        // create input
         const input = btn.appendChild(document.createElement('input')); // create input in div btn
         input.setAttribute('type', 'button'); // with attribute type="button"
         input.setAttribute('value', 'Voir ce modèle') // with attribute value="voir ce modèle"
+    
+        seeModel(product); // call function to link to product page
     }
+}
+
+
+////////////
+
+
+// go to product page
+
+function seeModel(product) {
+    let btnSeeModel = document.getElementById('see-model' + product._id);
+
+    // create url for product.html page for specific product
+    let indexUrl = new URL(window.location.href); // get current url
+    console.log(indexUrl);
+    let indexUrlString = indexUrl.toString(); // convert to string
+    console.log(indexUrlString);
+    let productUrlString = indexUrlString.replace('index', 'product'); // change 'index' to 'product'
+    console.log(productUrlString);
+    let productUrl = new URL(productUrlString); // convert back to url
+    console.log(productUrl);
+    productUrl.searchParams.set('id', product._id); // add the parameter 'id', with the product id as value
+    console.log(productUrl);
+
+    // listen to 'voir ce modèle' button
+    btnSeeModel.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = productUrl; // reload the page so changes taken into account
+    })
 }

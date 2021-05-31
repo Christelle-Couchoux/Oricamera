@@ -1,46 +1,45 @@
-#products-list{
+#products-list {
     margin: auto;
     text-align: center;
 }
 
-#items{
+#items {
     @include flexbox(column, nowrap, space-around, center);
     margin: auto;
     padding: 0 0 20px 0;
 
-    @include md{
+    @include md {
         @include flexbox(row, wrap, space-between, flex-start);
     }
 }
 
-.item{
+.item {
     @include links-style(map-get($color-txt, btn));
     @include flexbox(column, nowrap, space-between, center);
     max-width: 1000px;
     margin: 0 0 20px 0;
     border-top: solid 1px $color-primary-dark;
 
-    @include md{
+    @include md {
         width: 47%;
     }
 
-    &__name{
+    &__name {
         padding: 20px;
     }
 
-    &__image{
+    &__image {
         width: 100%;
 
-        img{
-            @include size(100%, auto);    
+        img {
+            @include size(100%, auto);
         }
     }
 
-    &__btn{
+    &__btn {
         margin: 5px 0 0 0;
 
-        input{
-            display: block;
+        input {
             @include font-family-size(btn-seemodel);
             @include color-bg-txt(btn-seemodel);
             @include flexbox(row, nowrap, center, center);
@@ -50,8 +49,8 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: all 200ms ease-in-out;
-        
-            &:hover{
+
+            &:hover {
                 color: $color-secondary;
                 padding: 0;
                 border: solid 2px $color-secondary;

@@ -5,38 +5,50 @@ function createCart() {
     let storedOrders = JSON.parse(localStorage.getItem('ordersList'));
     console.log(storedOrders);
 
-    for(storedOrder of storedOrders) { // for each order in the array
-        const tbody = document.getElementById('cart-tablebody'); // in the table
+    if(storedOrders === null || storedOrders.length === 0) {
+        const error = document.createElement('div'); // create div error
+        error.classList.add('error'); // with class="error" to add css style
+        error.innerText = 'Votre panier est vide !'; // with error message text
+        
+        const table = document.getElementById('continue').parentNode; // get parent of element before which to insert
+        const btnContinue = document.getElementById('continue'); // get element before which to insert
+        table.insertBefore(error, btnContinue); // in element parent, insert error before btnContinue
 
-        // add one row
-        const tr = tbody.appendChild(document.createElement('tr'));
+    } else {
 
-        // add and fill in name cell
-        const tdName = tr.appendChild(document.createElement('td'));
-        tdName.classList.add('td-name', 'align-left');
-        tdName.innerText = storedOrder.cameraName;
+        for(storedOrder of storedOrders) { // for each order in the array
+            const tbody = document.getElementById('cart-tablebody'); // in the table
 
-        // add and fill in lens cell
-        const tdLens = tr.appendChild(document.createElement('td'));
-        tdLens.classList.add('td-lens');
-        tdLens.innerText = storedOrder.cameraLens;
+            // add one row
+            const tr = tbody.appendChild(document.createElement('tr'));
 
-        // add and fill in price cell
-        const tdPrice = tr.appendChild(document.createElement('td'));
-        tdPrice.classList.add('td-price', 'align-right');
-        tdPrice.innerText = storedOrder.cameraPrice + ' €';
+            // add and fill in name cell
+            const tdName = tr.appendChild(document.createElement('td'));
+            tdName.classList.add('td-name', 'align-left');
+            tdName.innerText = storedOrder.cameraName;
 
-        // add and fill in quantity cell
-        const tdQuantity = tr.appendChild(document.createElement('td'));
-        tdQuantity.classList.add('td-quantity');
-        tdQuantity.innerText = storedOrder.cameraQuantity;
+            // add and fill in lens cell
+            const tdLens = tr.appendChild(document.createElement('td'));
+            tdLens.classList.add('td-lens');
+            tdLens.innerText = storedOrder.cameraLens;
 
-        // add and fill in total cell
-        const tdTotal = tr.appendChild(document.createElement('td'));
-        tdTotal.classList.add('td-total', 'align-right');
-        tdTotal.innerText = storedOrder.cameraPrice * storedOrder.cameraQuantity + ' €';
-    }
-    priceCalculation(storedOrders); // call function to calculate total price
+            // add and fill in price cell
+            const tdPrice = tr.appendChild(document.createElement('td'));
+            tdPrice.classList.add('td-price', 'align-right');
+            tdPrice.innerText = storedOrder.cameraPrice + ' €';
+
+            // add and fill in quantity cell
+            const tdQuantity = tr.appendChild(document.createElement('td'));
+            tdQuantity.classList.add('td-quantity');
+            tdQuantity.innerText = storedOrder.cameraQuantity;
+
+            // add and fill in total cell
+            const tdTotal = tr.appendChild(document.createElement('td'));
+            tdTotal.classList.add('td-total', 'align-right');
+            tdTotal.innerText = storedOrder.cameraPrice * storedOrder.cameraQuantity + ' €';
+        }
+        priceCalculation(storedOrders); // call function to calculate total price
+    }   
 };
 
 
@@ -163,7 +175,7 @@ function createContact(contact) {
 
         createProducts(storedOrders, contact); // call function to create products array
     } else {
-        alert('Veuillez remplir tous les champs du formulaire');
+        alert('Tous les champs du formulaire doivent être remplis et valides.');
     }
 }
 
