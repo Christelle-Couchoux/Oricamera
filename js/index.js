@@ -10,7 +10,7 @@ fetch(url)
     })
 
     .then(function(products) { // value of resolved promise is the array 'products'
-        console.log(products); // print array
+        //console.log(products); // print array
         createList(products); // call function to create products list
     })
 
@@ -72,15 +72,15 @@ function seeModel(product) {
 
     // create url for product.html page for specific product
     let indexUrl = new URL(window.location.href); // get current url
-    console.log(indexUrl);
+    //console.log(indexUrl);
     let indexUrlString = indexUrl.toString(); // convert to string
-    console.log(indexUrlString);
+    //console.log(indexUrlString);
     let productUrlString = indexUrlString.replace('index', 'product'); // change 'index' to 'product'
-    console.log(productUrlString);
+    //console.log(productUrlString);
     let productUrl = new URL(productUrlString); // convert back to url
-    console.log(productUrl);
+    //console.log(productUrl);
     productUrl.searchParams.set('id', product._id); // add the parameter 'id', with the product id as value
-    console.log(productUrl);
+    //console.log(productUrl);
 
     // listen to 'voir ce modèle' button
     btnSeeModel.addEventListener('click', function(event) {

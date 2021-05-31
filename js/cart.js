@@ -6,16 +6,8 @@ function createCart() {
     console.log(storedOrders);
 
     if(storedOrders === null || storedOrders.length === 0) {
-        const error = document.createElement('div'); // create div error
-        error.classList.add('error'); // with class="error" to add css style
-        error.innerText = 'Votre panier est vide !'; // with error message text
-        
-        const table = document.getElementById('continue').parentNode; // get parent of element before which to insert
-        const btnContinue = document.getElementById('continue'); // get element before which to insert
-        table.insertBefore(error, btnContinue); // in element parent, insert error before btnContinue
-
+        cartIsEmptyMessage(); // call function to show a 'Votre panier est vide !' message
     } else {
-
         for(storedOrder of storedOrders) { // for each order in the array
             const tbody = document.getElementById('cart-tablebody'); // in the table
 
@@ -52,6 +44,19 @@ function createCart() {
 };
 
 
+// show 'Votre panier est vide !' message
+
+function cartIsEmptyMessage(){
+    const error = document.createElement('div'); // create div error
+    error.classList.add('error'); // with class="error" to add css style
+    error.innerText = 'Votre panier est vide !'; // with error message text
+
+    const table = document.getElementById('continue').parentNode; // get parent of element before which to insert
+    const btnContinue = document.getElementById('continue'); // get element before which to insert
+    table.insertBefore(error, btnContinue); // in element parent, insert error before btnContinue
+}
+
+
 // calculate total price
 function priceCalculation(storedOrders) {
 
@@ -61,11 +66,11 @@ function priceCalculation(storedOrders) {
         let price = storedOrder.cameraPrice; // get the price
         pricesArray.push(price); // put it in the array
     };
-    console.log(pricesArray);
+    //console.log(pricesArray);
 
     // add up all the prices
     const totalPrice = pricesArray.reduce(addUp,0); // function reduce executes function addUp
-    console.log(totalPrice);
+    //console.log(totalPrice);
 
     // fill in total price cell
     const thTotal = document.getElementById('total'); // in total price cell
@@ -89,7 +94,7 @@ function addUp(accumulator, currentValue) {
 
 function storeTotalPrice(totalPrice) {
     localStorage.setItem('orderTotal', JSON.stringify(totalPrice));
-    console.log(totalPrice);
+    //console.log(totalPrice);
 }
 
 
@@ -117,6 +122,7 @@ function emptyCart() {
 
     btnEmpty.addEventListener('click', function(event) { // listen to 'vider le panier' button
         localStorage.removeItem('ordersList'); // remove array with stored orders
+        //console.log(storedOrders);
         window.location.href = 'cart.html'; // reload the page so changes taken into account
     });
 }
@@ -171,7 +177,7 @@ function createContact(contact) {
         }  
         // create new instance of class ContactToSend  
         let contact = new ContactToSend(firstname.value, lastname.value, address.value, city.value, email.value);
-        console.log(contact);
+        //console.log(contact);
 
         createProducts(storedOrders, contact); // call function to create products array
     } else {
@@ -184,14 +190,14 @@ function createContact(contact) {
 
 function createProducts(storedOrders, contact) {
     storedOrders = JSON.parse(localStorage.getItem('ordersList'));
-    console.log(storedOrders);
+    //console.log(storedOrders);
 
     let products = [];
     for(storedOrder of storedOrders) {
         let productId = storedOrder.cameraId;
         products.push(productId);
     }
-    console.log(products);
+    //console.log(products);
 
     createObjectToSend(contact, products); // call function to create object with contact and products
 }
@@ -204,6 +210,7 @@ function createObjectToSend(contact, products) {
         contact,
         products
     }
+    //console.log(objectToSend);
 
     send(objectToSend); // call function to send data to server
 }
@@ -228,7 +235,7 @@ function send(objectToSend) {
     })
 
     .then(function(serverResponse) { // resolved promise
-        console.log(serverResponse); // print object
+        //console.log(serverResponse); // print object
         storeOrderId(serverResponse); // call function
     })
 
@@ -245,8 +252,8 @@ function send(objectToSend) {
 // store order id
 
 function storeOrderId(data) {
-    console.log(data.orderId);
-    localStorage.setItem('orderId', data.orderId);
+    const storedOrderId = localStorage.setItem('orderId', data.orderId);
+    //console.log(storedOrderId);
     window.location = 'confirm.html';
     localStorage.removeItem('OrdersList')
 }

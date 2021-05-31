@@ -1,10 +1,8 @@
 // scroll to top button
 
-function scrollToTop() {
-    const btnScroll = document.getElementById('scroll-to-top');
-    listenScroll(btnScroll);
-    listenScrollBtn(btnScroll);
-}
+const btnScroll = document.getElementById('scroll-to-top');
+
+// show scroll-to-top button
 
 function listenScroll(btnScroll) {
     document.addEventListener('scroll', function(event) {
@@ -16,6 +14,8 @@ function listenScroll(btnScroll) {
     })
 }
 
+// go to top of page
+
 function listenScrollBtn(btnScroll) {
     btnScroll.addEventListener('click', function(event) {
         window.scrollTo({
@@ -26,6 +26,7 @@ function listenScrollBtn(btnScroll) {
 }
 
 
-// call function
+// call functions
 
-scrollToTop();
+listenScroll(btnScroll);
+listenScrollBtn(btnScroll);

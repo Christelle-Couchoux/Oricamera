@@ -3,11 +3,11 @@
 function getStoredData() {
     // order id
     let orderId = localStorage.getItem('orderId');
-    console.log(orderId);
+    //console.log(orderId);
 
     // order total price
     let orderTotal = localStorage.getItem('orderTotal');
-    console.log(orderTotal);
+    //console.log(orderTotal);
 
     fillInOrderDetails(orderId, orderTotal); // call function to add retrieved data to page
 }
@@ -33,6 +33,7 @@ function fillInOrderDetails(orderId, orderTotal) {
 
 function clearStorage() { // once order is confirmed, clear cart
     localStorage.clear();
+    //console.log (localStorage.length);
 }
 
 

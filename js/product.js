@@ -1,14 +1,14 @@
 // url for selected product
 let productUrl = new URL(window.location.href); // get current url
-console.log(productUrl);
+//console.log(productUrl);
 let id = productUrl.searchParams.get('id'); // get the value (= product id) of the parameter 'id'
-console.log(id);
+//console.log(id);
 
 
 // get product details from API
 
 const url = 'http://localhost:3000/api/cameras/' +id; // add product id 'id' to api url
-console.log(url);
+//console.log(url);
 
 fetch(url)
     .then(function(response) {
@@ -18,7 +18,7 @@ fetch(url)
     })
 
     .then(function(product) { // value of resolved promise is the object 'product'
-        console.log(product); // print object
+        //console.log(product); // print object
         createProduct(product); // call function to display poduct details
         listenToAddToCart(product); // call function to listen to click on 'ajouter au panier' button
     })
@@ -69,7 +69,7 @@ function createProduct(product) { // display info from object 'product'
 }
 
 
-// listen to click on 'add to cart' button
+// listen to click on 'ajouter au panier' button
 
 function listenToAddToCart(product) { // 'product' in parameter because createOrder needs it
     const btnAddtocart = document.getElementById('addtocart');
@@ -87,7 +87,7 @@ function createOrder(product) {
     const isValidLens = select.checkValidity();
 
     if(isValidLens) { // if a lens is selected
-        console.log(isValidLens);
+        //console.log(isValidLens);
 
         // create order 
         // declare class Camera
@@ -102,7 +102,7 @@ function createOrder(product) {
         }
         // create new instance of class Camera
         let chosenCamera = new Camera(product._id, product.name, select.value, quantity.value, product.price / 100);
-        console.log(chosenCamera);
+        //console.log(chosenCamera);
 
         storeOrder(chosenCamera); // call function to store order in local storage
     } else {
@@ -121,13 +121,13 @@ function storeOrder(object) {
     if(storedOrders) { // if the array already exists in local storage
         storedOrders.push(object); // add new order to array
         localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
-        console.log(storedOrders);
+        //console.log(storedOrders);
         window.location.href = 'cart.html'; // go to cart page
     } else { // if the array does not exist yet
         storedOrders = []; // create the array (empty)
         storedOrders.push(object); // put the new order in it
         localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array to local storage (changed to json)
-        console.log(storedOrders);
+        //console.log(storedOrders);
         window.location.href = 'cart.html'; // go to cart page
     }
 }
