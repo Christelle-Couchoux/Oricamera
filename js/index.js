@@ -26,7 +26,7 @@ fetch(url)
 // create products list
 
 function createList(products) {
-    for(product of products) { // for each object in the array products
+    for(let product of products) { // for each object in the array products
 
         // create div "item"
         const divItems = document.getElementById('items'); // in div id="items"

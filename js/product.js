@@ -25,10 +25,13 @@ fetch(url)
 
     .catch(function(err) {
         console.error('Erreur lors de la requête : ', err); // print error message in console
-        const model = document.getElementById('model'); // in div id="model"
-        const error = model.appendChild(document.createElement('div')); // create div error
+        
+        const error = document.createElement('div'); // create div error
         error.classList.add('error'); // with class="error" to add css style
         error.innerText = 'Une erreur est survenue lors du chargement du produit.'; // with error message text
+        const model = document.getElementById('div-info').parentNode; // get parent of div-info
+        const info = document.getElementById('div-info'); // get div-info
+        model.insertBefore(error, info); // in element parent insert error before info
     });
 
 
@@ -85,26 +88,33 @@ function listenToAddToCart(product) { // 'product' in parameter because createOr
 function createOrder(product) {
     const select = document.getElementById('lens-selection');
     const isValidLens = select.checkValidity();
+    const quantity = document.getElementById('quantity');
+    const isValidQuantity = quantity.checkValidity();
 
     if(isValidLens) { // if a lens is selected
         //console.log(isValidLens);
+        if(isValidQuantity) { // if quantity is not 0
+            //console.log(isValidQuantity);
 
-        // create order 
-        // declare class Camera
-        class Camera { 
-            constructor(cameraId, cameraName, cameraLens, cameraQuantity, cameraPrice) {
-                this.cameraId = cameraId;
-                this.cameraName = cameraName;
-                this.cameraLens = cameraLens;
-                this.cameraQuantity = cameraQuantity;
-                this.cameraPrice = cameraPrice; 
+            // create order 
+            // declare class Camera
+            class Camera { 
+                constructor(cameraId, cameraName, cameraLens, cameraQuantity, cameraPrice) {
+                    this.cameraId = cameraId;
+                    this.cameraName = cameraName;
+                    this.cameraLens = cameraLens;
+                    this.cameraQuantity = cameraQuantity;
+                    this.cameraPrice = cameraPrice; 
+                }
             }
-        }
-        // create new instance of class Camera
-        let chosenCamera = new Camera(product._id, product.name, select.value, quantity.value, product.price / 100);
-        //console.log(chosenCamera);
+            // create new instance of class Camera
+            let chosenCamera = new Camera(product._id, product.name, select.value, quantity.value, product.price / 100);
+            //console.log(chosenCamera);
 
-        storeOrder(chosenCamera); // call function to store order in local storage
+            storeOrder(chosenCamera); // call function to store order in local storage
+        } else {
+            alert('Veuillez choisir une quantité supérieure à 0.');
+        }
     } else {
         alert('Veuillez choisir un objectif.');
     }

@@ -4,8 +4,9 @@
     @include font-family-size(error);
     @include color-bg-txt(error);
     @include flexbox(row, nowrap, center, center);
-    @include size(auto, auto);
+    @include size(fit-content, auto);
     margin: auto;
+    margin-bottom: 30px;
     padding: 5px 10px 5px 10px;
     border: solid 3px map-get($map: $color-txt, $key: error);
 }

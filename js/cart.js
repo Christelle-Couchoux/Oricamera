@@ -3,12 +3,12 @@
 function createCart() {
     // get stored data from local storage
     let storedOrders = JSON.parse(localStorage.getItem('ordersList'));
-    console.log(storedOrders);
+    //console.log(storedOrders);
 
     if(storedOrders === null || storedOrders.length === 0) {
         cartIsEmptyMessage(); // call function to show a 'Votre panier est vide !' message
     } else {
-        for(storedOrder of storedOrders) { // for each order in the array
+        for(let storedOrder of storedOrders) { // for each order in the array
             const tbody = document.getElementById('cart-tablebody'); // in the table
 
             // add one row
@@ -62,8 +62,8 @@ function priceCalculation(storedOrders) {
 
     // put all prices in an array
     let pricesArray = [];
-    for(storedOrder of storedOrders) { // for each order stored
-        let price = storedOrder.cameraPrice; // get the price
+    for(let storedOrder of storedOrders) { // for each order stored
+        let price = storedOrder.cameraPrice * storedOrder.cameraQuantity; // get the price of the product * the quantity
         pricesArray.push(price); // put it in the array
     };
     //console.log(pricesArray);
@@ -193,7 +193,7 @@ function createProducts(storedOrders, contact) {
     //console.log(storedOrders);
 
     let products = [];
-    for(storedOrder of storedOrders) {
+    for(let storedOrder of storedOrders) {
         let productId = storedOrder.cameraId;
         products.push(productId);
     }
