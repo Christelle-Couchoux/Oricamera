@@ -1,0 +1,33 @@
+// remove item button
+
+.btn-trash {
+    border: none;
+    background-color: $color-basic-light;
+    color: $color-basic-dark;
+    margin-left: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+// change quantity button
+
+.btn-plusminus {
+    @include font-family-size(btn-plusminus);
+    @include color-bg-txt(btn-plusminus);
+    @include flexbox(row, nowrap, center, center);
+    @include size(15px, 15px);
+    border: solid 1px $color-basic-dark;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btn-minus {
+    margin-left: 10px;
+}
+
+

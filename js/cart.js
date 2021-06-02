@@ -8,6 +8,7 @@ function createCart() {
     if(storedOrders === null || storedOrders.length === 0) {
         cartIsEmptyMessage(); // call function to show a 'Votre panier est vide !' message
     } else {
+        let i = 0; // start for dynamic id
         for(let storedOrder of storedOrders) { // for each order in the array
             const tbody = document.getElementById('cart-tablebody'); // in the table
 
@@ -32,7 +33,30 @@ function createCart() {
             // add and fill in quantity cell
             const tdQuantity = tr.appendChild(document.createElement('td'));
             tdQuantity.classList.add('td-quantity');
-            tdQuantity.innerText = storedOrder.cameraQuantity;
+            tdQuantity.setAttribute('id', i++); // give dynamic id, needed for trash button
+            const quantityValue = tdQuantity.appendChild(document.createElement('p'));
+            quantityValue.innerText = storedOrder.cameraQuantity;
+
+            // add buttons to change quantity
+            //const btnPlusMinus = tdQuantity.appendChild(document.createElement('div'));
+            //btnPlusMinus.classList.add('btn-quantity');
+
+            // add minus button
+            const btnMinus = tdQuantity.appendChild(document.createElement('button'));
+            btnMinus.innerText = '-';
+            btnMinus.classList.add('btn-plusminus', 'btn-minus');
+            
+            //add plus button
+            const btnPlus = tdQuantity.appendChild(document.createElement('button'));
+            btnPlus.innerText = '+';
+            btnPlus.classList.add('btn-plusminus', 'btn-plus');
+
+            // add remove product button
+            const btnTrash = tdQuantity.appendChild(document.createElement('button'));
+            btnTrash.classList.add('btn-trash');
+            btnTrash.title = 'Supprimer le produit';
+            const iconTrash = btnTrash.appendChild(document.createElement('i'));
+            iconTrash.className = 'fas fa-trash-alt';
 
             // add and fill in total cell
             const tdTotal = tr.appendChild(document.createElement('td'));
@@ -95,6 +119,58 @@ function addUp(accumulator, currentValue) {
 function storeTotalPrice(totalPrice) {
     localStorage.setItem('orderTotal', JSON.stringify(totalPrice));
     //console.log(totalPrice);
+}
+
+
+////////////
+
+
+////// WIP
+
+// add 1 to quantity
+
+function quantityPlus() {
+    const arrayBtnPlus = document.getElementsByClassName('btn-plus'); // get al the plus buttons
+    for(let btnPlus of arrayBtnPlus) { // for each plus button
+        btnPlus.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            let quantity = this.closest('p').innerText; // can't find how to select the p in which the quantity is
+            console.log(quantity);
+            quantity = parseInt(quantity) + 1;
+
+
+            /*
+            let id = this.closest('.td-quantity').id; // get dynamic id the cell
+            //console.log(id);
+
+            storedOrders.splice(id, 1); // remove product (id in table and index in local storage are the same)
+            localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array to local storage (changed to json)
+            window.location.href = 'cart.html'; // reload cart page
+            */
+        })
+    }
+}
+
+
+
+////////////
+
+
+// remove item from cart
+
+function removeItem() {
+    const arrayBtnRemove = document.getElementsByClassName('btn-trash'); // get all the trash buttons
+    for(let btnRemove of arrayBtnRemove) { // for each trash button
+        btnRemove.addEventListener('click', function(event) {
+            event.preventDefault();
+            let id = this.closest('.td-quantity').id; // get dynamic id the cell
+            //console.log(id);
+            storedOrders.splice(id, 1); // remove product (id in table and index in local storage are the same)
+            localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array to local storage (changed to json)
+            window.location.href = 'cart.html'; // reload cart page
+        })
+    }
 }
 
 
@@ -267,4 +343,6 @@ function storeOrderId(data) {
 continueShopping(); // needs to be called first so works even if cart empty
 createCart();
 emptyCart();
+quantityPlus();
+removeItem();
 validateOrder();

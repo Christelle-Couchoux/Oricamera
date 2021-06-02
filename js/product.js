@@ -83,7 +83,7 @@ function listenToAddToCart(product) { // 'product' in parameter because createOr
 }
 
 
-// create order (if lens selected)
+// create order (if lens selected and quantity > 0)
 
 function createOrder(product) {
     const select = document.getElementById('lens-selection');
@@ -93,7 +93,7 @@ function createOrder(product) {
 
     if(isValidLens) { // if a lens is selected
         //console.log(isValidLens);
-        if(isValidQuantity) { // if quantity is not 0
+        if(isValidQuantity) { // if quantity is > 0
             //console.log(isValidQuantity);
 
             // create order 
@@ -111,7 +111,7 @@ function createOrder(product) {
             let chosenCamera = new Camera(product._id, product.name, select.value, quantity.value, product.price / 100);
             //console.log(chosenCamera);
 
-            storeOrder(chosenCamera); // call function to store order in local storage
+            storeOrder(chosenCamera); // call function to store the order in local storage
         } else {
             alert('Veuillez choisir une quantité supérieure à 0.');
         }
@@ -120,22 +120,32 @@ function createOrder(product) {
     }
 }
 
+// store order in local storage
 
-// store order in localStorage
-
-/* local storage stores the array 'storedOrders',
-with the key 'ordersList' and the value 'JSON.stigify(storedOrders)' */
-
-function storeOrder(object) {
+function storeOrder(chosenCamera) {
     let storedOrders = JSON.parse(localStorage.getItem('ordersList')); // get the array out of local storage, change it to js and put it in a variable
     if(storedOrders) { // if the array already exists in local storage
-        storedOrders.push(object); // add new order to array
-        localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
-        //console.log(storedOrders);
-        window.location.href = 'cart.html'; // go to cart page
+        let indexId = storedOrders.findIndex(x => x.cameraId === chosenCamera.cameraId); // find product in array with same id
+        //console.log(indexId); // returns index of product, or -1 if no match
+        let indexLens = storedOrders.findIndex(x => x.cameraLens === chosenCamera.cameraLens); // find product in array with same lens
+        //console.log(indexLens); // returns index of product, or -1 if no match
+
+        if(indexId === indexLens && indexId !== -1) { // if there is a product with same id and same lens
+            let newQuantity = parseInt(storedOrders[indexId].cameraQuantity) + parseInt(chosenCamera.cameraQuantity); // calculate new quantity. parseInt to convert string to number
+            //console.log(newQuantity);
+            storedOrders[indexId].cameraQuantity = newQuantity; // change quantity of product already in order
+            //console.log(storedOrders);
+            localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
+            window.location.href = 'cart.html'; // go to cart page          
+        } else {
+            storedOrders.push(chosenCamera); // add new order to array
+            localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
+            //console.log(storedOrders);
+            window.location.href = 'cart.html'; // go to cart page 
+        }
     } else { // if the array does not exist yet
         storedOrders = []; // create the array (empty)
-        storedOrders.push(object); // put the new order in it
+        storedOrders.push(chosenCamera); // put the new order in it
         localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array to local storage (changed to json)
         //console.log(storedOrders);
         window.location.href = 'cart.html'; // go to cart page

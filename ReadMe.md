@@ -5,7 +5,7 @@
 
 #### Aim
 - Build the front-end for an online store using HTML, CSS and JavaScript. 
-- The back-end server already exists ([API available on GitHub](https://github.com/OpenClassrooms-Student-Center/JWDP5)).
+- The back-end server already exists ([available on GitHub](https://github.com/OpenClassrooms-Student-Center/JWDP5)).
 - This is just an MVP to show how the app works. There is no mock-up for the user interface.
 
 For more details, see the brief.
@@ -24,7 +24,7 @@ For more details, see the brief.
 - The code should be be indented.
 - The code should be commented.
 - The code should use global functions.
-- Promises shoul be used.
+- Promises should be used.
 - A unit test plan should be provided.
 
 
@@ -32,7 +32,7 @@ For more details, see the brief.
 #### Test site locally ####
 
 - You need Node.js and npm installed locally.
-- Download the [back-end server](https://github.com/OpenClassrooms-Student-Center/JWDP5)
+- Go to the [back-end server](https://github.com/OpenClassrooms-Student-Center/JWDP5)
 - Clone the repo.
 - Run 'npm install' from the project folder.
 - Run the server with 'node server'. The server should run on localhost with default port 3000.

@@ -187,6 +187,38 @@ h4 {
   padding: 3px 0 0 0;
 }
 
+.btn-trash {
+  border: none;
+  background-color: white;
+  color: #43444c;
+  margin-left: 10px;
+}
+.btn-trash:hover {
+  cursor: pointer;
+}
+
+.btn-plusminus {
+  font-family: "latoregular", "arial", "sans-serif";
+  font-size: 0.8rem;
+  background-color: white;
+  color: #43444c;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  border: solid 1px #43444c;
+}
+.btn-plusminus:hover {
+  cursor: pointer;
+}
+
+.btn-minus {
+  margin-left: 10px;
+}
+
 header {
   /* links take color from map $color-txt, 
   default is main but can be changed */
@@ -642,6 +674,9 @@ table th {
 table td {
   border: 1px solid #43444c;
 }
+table tr {
+  border: 1px solid #43444c;
+}
 table thead {
   font-family: "montserratbold", "arial", "sans-serif";
   font-size: 0.8rem;
@@ -698,6 +733,15 @@ table tfoot {
 
 .extra-padding {
   padding: 0 7px 0 7px;
+}
+
+.td-quantity {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  border: none;
 }
 
 .cart__btn {
