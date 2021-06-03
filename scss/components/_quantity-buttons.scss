@@ -4,7 +4,11 @@
     border: none;
     background-color: $color-basic-light;
     color: $color-basic-dark;
-    margin-left: 10px;
+    margin-left: 5px;
+
+    @include sm {
+        margin-left: 10px;  
+    }
 
     &:hover {
         cursor: pointer;
@@ -27,7 +31,11 @@
 }
 
 .btn-minus {
-    margin-left: 10px;
+    margin-left: 5px;
+
+    @include sm {
+        margin-left: 10px;  
+    }
 }
 
 

@@ -191,7 +191,12 @@ h4 {
   border: none;
   background-color: white;
   color: #43444c;
-  margin-left: 10px;
+  margin-left: 5px;
+}
+@media all and (min-width: 576px) {
+  .btn-trash {
+    margin-left: 10px;
+  }
 }
 .btn-trash:hover {
   cursor: pointer;
@@ -216,7 +221,12 @@ h4 {
 }
 
 .btn-minus {
-  margin-left: 10px;
+  margin-left: 5px;
+}
+@media all and (min-width: 576px) {
+  .btn-minus {
+    margin-left: 10px;
+  }
 }
 
 header {

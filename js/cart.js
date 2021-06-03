@@ -33,19 +33,15 @@ function createCart() {
             // add and fill in quantity cell
             const tdQuantity = tr.appendChild(document.createElement('td'));
             tdQuantity.classList.add('td-quantity');
-            tdQuantity.setAttribute('id', i++); // give dynamic id, needed for trash button
+            tdQuantity.setAttribute('id', i++); // give dynamic id, needed for -, + and trash buttons
             const quantityValue = tdQuantity.appendChild(document.createElement('p'));
             quantityValue.innerText = storedOrder.cameraQuantity;
-
-            // add buttons to change quantity
-            //const btnPlusMinus = tdQuantity.appendChild(document.createElement('div'));
-            //btnPlusMinus.classList.add('btn-quantity');
 
             // add minus button
             const btnMinus = tdQuantity.appendChild(document.createElement('button'));
             btnMinus.innerText = '-';
             btnMinus.classList.add('btn-plusminus', 'btn-minus');
-            
+
             //add plus button
             const btnPlus = tdQuantity.appendChild(document.createElement('button'));
             btnPlus.innerText = '+';
@@ -64,7 +60,7 @@ function createCart() {
             tdTotal.innerText = storedOrder.cameraPrice * storedOrder.cameraQuantity + ' €';
         }
         priceCalculation(storedOrders); // call function to calculate total price
-    }   
+    }
 };
 
 
@@ -125,33 +121,50 @@ function storeTotalPrice(totalPrice) {
 ////////////
 
 
-////// WIP
+// substract 1 to quantity
 
-// add 1 to quantity
+function quantityMinus() {
+    let storedOrders = JSON.parse(localStorage.getItem('ordersList')); // get the array out of local storage
+    const arrayBtnMinus = document.getElementsByClassName('btn-minus'); // get all the minus buttons
+    console.log(arrayBtnMinus);
 
-function quantityPlus() {
-    const arrayBtnPlus = document.getElementsByClassName('btn-plus'); // get al the plus buttons
-    for(let btnPlus of arrayBtnPlus) { // for each plus button
-        btnPlus.addEventListener('click', function(event) {
+    for(let btnMinus of arrayBtnMinus) { // for each minus button
+        btnMinus.addEventListener('click', function(event) {
             event.preventDefault();
 
-            let quantity = this.closest('p').innerText; // can't find how to select the p in which the quantity is
-            console.log(quantity);
-            quantity = parseInt(quantity) + 1;
+            let id = this.closest('.td-quantity').id; // get dynamic id of the cell
+            console.log(id);
 
-
-            /*
-            let id = this.closest('.td-quantity').id; // get dynamic id the cell
-            //console.log(id);
-
-            storedOrders.splice(id, 1); // remove product (id in table and index in local storage are the same)
-            localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array to local storage (changed to json)
+            storedOrders[id].cameraQuantity = parseInt(storedOrders[id].cameraQuantity) - 1; // change quantity
+            localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
             window.location.href = 'cart.html'; // reload cart page
-            */
         })
     }
 }
 
+
+////////////
+
+// add 1 to quantity
+
+function quantityPlus() {
+    let storedOrders = JSON.parse(localStorage.getItem('ordersList')); // get the array out of local storage
+    const arrayBtnPlus = document.getElementsByClassName('btn-plus'); // get all the plus buttons
+    console.log(arrayBtnPlus);
+    
+    for(let btnPlus of arrayBtnPlus) { // for each plus button
+        btnPlus.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            let id = this.closest('.td-quantity').id; // get dynamic id of the cell
+            console.log(id);
+
+            storedOrders[id].cameraQuantity = parseInt(storedOrders[id].cameraQuantity) + 1; // change quantity
+            localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
+            window.location.href = 'cart.html'; // reload cart page
+        })
+    }
+}
 
 
 ////////////
@@ -164,7 +177,7 @@ function removeItem() {
     for(let btnRemove of arrayBtnRemove) { // for each trash button
         btnRemove.addEventListener('click', function(event) {
             event.preventDefault();
-            let id = this.closest('.td-quantity').id; // get dynamic id the cell
+            let id = this.closest('.td-quantity').id; // get dynamic id of the cell
             //console.log(id);
             storedOrders.splice(id, 1); // remove product (id in table and index in local storage are the same)
             localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array to local storage (changed to json)
@@ -343,6 +356,7 @@ function storeOrderId(data) {
 continueShopping(); // needs to be called first so works even if cart empty
 createCart();
 emptyCart();
+quantityMinus();
 quantityPlus();
 removeItem();
 validateOrder();
