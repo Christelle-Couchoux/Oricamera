@@ -126,14 +126,14 @@ function storeTotalPrice(totalPrice) {
 function quantityMinus() {
     let storedOrders = JSON.parse(localStorage.getItem('ordersList')); // get the array out of local storage
     const arrayBtnMinus = document.getElementsByClassName('btn-minus'); // get all the minus buttons
-    console.log(arrayBtnMinus);
+    //console.log(arrayBtnMinus);
 
     for(let btnMinus of arrayBtnMinus) { // for each minus button
         btnMinus.addEventListener('click', function(event) {
             event.preventDefault();
 
             let id = this.closest('.td-quantity').id; // get dynamic id of the cell
-            console.log(id);
+            //console.log(id);
 
             storedOrders[id].cameraQuantity = parseInt(storedOrders[id].cameraQuantity) - 1; // change quantity
             if(storedOrders[id].cameraQuantity === 0) {
@@ -153,14 +153,14 @@ function quantityMinus() {
 function quantityPlus() {
     let storedOrders = JSON.parse(localStorage.getItem('ordersList')); // get the array out of local storage
     const arrayBtnPlus = document.getElementsByClassName('btn-plus'); // get all the plus buttons
-    console.log(arrayBtnPlus);
+    //console.log(arrayBtnPlus);
 
     for(let btnPlus of arrayBtnPlus) { // for each plus button
         btnPlus.addEventListener('click', function(event) {
             event.preventDefault();
 
             let id = this.closest('.td-quantity').id; // get dynamic id of the cell
-            console.log(id);
+            //console.log(id);
 
             storedOrders[id].cameraQuantity = parseInt(storedOrders[id].cameraQuantity) + 1; // change quantity
             localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
@@ -182,6 +182,7 @@ function removeItem() {
             event.preventDefault();
             let id = this.closest('.td-quantity').id; // get dynamic id of the cell
             //console.log(id);
+            storedOrders.splice(id, 1); // remove product
             localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array to local storage (changed to json)
             window.location.href = 'cart.html'; // reload cart page
         })
