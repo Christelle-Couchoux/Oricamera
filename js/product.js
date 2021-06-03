@@ -25,7 +25,7 @@ fetch(url)
 
     .catch(function(err) {
         console.error('Erreur lors de la requête : ', err); // print error message in console
-        
+
         const error = document.createElement('div'); // create div error
         error.classList.add('error'); // with class="error" to add css style
         error.innerText = 'Une erreur est survenue lors du chargement du produit.'; // with error message text
@@ -96,15 +96,15 @@ function createOrder(product) {
         if(isValidQuantity) { // if quantity is > 0
             //console.log(isValidQuantity);
 
-            // create order 
+            // create order
             // declare class Camera
-            class Camera { 
+            class Camera {
                 constructor(cameraId, cameraName, cameraLens, cameraQuantity, cameraPrice) {
                     this.cameraId = cameraId;
                     this.cameraName = cameraName;
                     this.cameraLens = cameraLens;
                     this.cameraQuantity = cameraQuantity;
-                    this.cameraPrice = cameraPrice; 
+                    this.cameraPrice = cameraPrice;
                 }
             }
             // create new instance of class Camera
@@ -136,12 +136,12 @@ function storeOrder(chosenCamera) {
             storedOrders[indexId].cameraQuantity = newQuantity; // change quantity of product already in order
             //console.log(storedOrders);
             localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
-            window.location.href = 'cart.html'; // go to cart page          
+            window.location.href = 'cart.html'; // go to cart page
         } else {
             storedOrders.push(chosenCamera); // add new order to array
             localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
             //console.log(storedOrders);
-            window.location.href = 'cart.html'; // go to cart page 
+            window.location.href = 'cart.html'; // go to cart page
         }
     } else { // if the array does not exist yet
         storedOrders = []; // create the array (empty)

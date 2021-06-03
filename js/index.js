@@ -56,7 +56,7 @@ function createList(products) {
         const input = btn.appendChild(document.createElement('input')); // create input in div btn
         input.setAttribute('type', 'button'); // with attribute type="button"
         input.setAttribute('value', 'Voir ce modèle') // with attribute value="voir ce modèle"
-    
+
         seeModel(product); // call function to link to product page
     }
 }

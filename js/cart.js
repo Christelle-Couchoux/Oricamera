@@ -136,6 +136,9 @@ function quantityMinus() {
             console.log(id);
 
             storedOrders[id].cameraQuantity = parseInt(storedOrders[id].cameraQuantity) - 1; // change quantity
+            if(storedOrders[id].cameraQuantity === 0) {
+                storedOrders.splice(id, 1); // remove product
+            }
             localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array back to local storage (changed to json)
             window.location.href = 'cart.html'; // reload cart page
         })
@@ -151,7 +154,7 @@ function quantityPlus() {
     let storedOrders = JSON.parse(localStorage.getItem('ordersList')); // get the array out of local storage
     const arrayBtnPlus = document.getElementsByClassName('btn-plus'); // get all the plus buttons
     console.log(arrayBtnPlus);
-    
+
     for(let btnPlus of arrayBtnPlus) { // for each plus button
         btnPlus.addEventListener('click', function(event) {
             event.preventDefault();
@@ -179,7 +182,6 @@ function removeItem() {
             event.preventDefault();
             let id = this.closest('.td-quantity').id; // get dynamic id of the cell
             //console.log(id);
-            storedOrders.splice(id, 1); // remove product (id in table and index in local storage are the same)
             localStorage.setItem('ordersList', JSON.stringify(storedOrders)); // send the array to local storage (changed to json)
             window.location.href = 'cart.html'; // reload cart page
         })
@@ -252,7 +254,7 @@ function createContact(contact) {
     console.log(isValidFirstName, isValidLastName, isValidAddress, isValidCity, isValidEmail);
 
     if(isValidFirstName && isValidLastName && isValidAddress && isValidCity && isValidEmail) {
-        
+
         // create contact
         // declare class ContactToSend
         class ContactToSend {
@@ -263,8 +265,8 @@ function createContact(contact) {
                 this.city = city;
                 this.email = email;
             }
-        }  
-        // create new instance of class ContactToSend  
+        }
+        // create new instance of class ContactToSend
         let contact = new ContactToSend(firstname.value, lastname.value, address.value, city.value, email.value);
         //console.log(contact);
 
