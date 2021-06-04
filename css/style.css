@@ -745,13 +745,12 @@ table tfoot {
   padding: 0 7px 0 7px;
 }
 
-.td-quantity {
+.quantity-div {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  border: none;
 }
 
 .cart__btn {

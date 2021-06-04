@@ -114,9 +114,8 @@ table {
     padding: 0 7px 0 7px;
 }
 
-.td-quantity {
+.quantity-div {
     @include flexbox(row, nowrap, center, center);
-    border: none;
 }
 
 .cart__btn {

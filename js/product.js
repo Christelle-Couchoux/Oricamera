@@ -19,7 +19,7 @@ fetch(url)
 
     .then(function(product) { // value of resolved promise is the object 'product'
         //console.log(product); // print object
-        createProduct(product); // call function to display poduct details
+        createProduct(product); // call function to display product details
         listenToAddToCart(product); // call function to listen to click on 'ajouter au panier' button
     })
 

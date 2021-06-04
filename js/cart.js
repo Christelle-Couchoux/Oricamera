@@ -34,21 +34,23 @@ function createCart() {
             const tdQuantity = tr.appendChild(document.createElement('td'));
             tdQuantity.classList.add('td-quantity');
             tdQuantity.setAttribute('id', i++); // give dynamic id, needed for -, + and trash buttons
-            const quantityValue = tdQuantity.appendChild(document.createElement('p'));
+            const quantityDiv = tdQuantity.appendChild(document.createElement('div'));
+            quantityDiv.classList.add('quantity-div');
+            const quantityValue = quantityDiv.appendChild(document.createElement('p'));
             quantityValue.innerText = storedOrder.cameraQuantity;
 
             // add minus button
-            const btnMinus = tdQuantity.appendChild(document.createElement('button'));
+            const btnMinus = quantityDiv.appendChild(document.createElement('button'));
             btnMinus.innerText = '-';
             btnMinus.classList.add('btn-plusminus', 'btn-minus');
 
             //add plus button
-            const btnPlus = tdQuantity.appendChild(document.createElement('button'));
+            const btnPlus = quantityDiv.appendChild(document.createElement('button'));
             btnPlus.innerText = '+';
             btnPlus.classList.add('btn-plusminus', 'btn-plus');
 
             // add remove product button
-            const btnTrash = tdQuantity.appendChild(document.createElement('button'));
+            const btnTrash = quantityDiv.appendChild(document.createElement('button'));
             btnTrash.classList.add('btn-trash');
             btnTrash.title = 'Supprimer le produit';
             const iconTrash = btnTrash.appendChild(document.createElement('i'));
