@@ -254,7 +254,7 @@ function createContact(contact) {
     const isValidCity = city.checkValidity();
     const isValidEmail = email.checkValidity();
 
-    console.log(isValidFirstName, isValidLastName, isValidAddress, isValidCity, isValidEmail);
+    //console.log(isValidFirstName, isValidLastName, isValidAddress, isValidCity, isValidEmail);
 
     if(isValidFirstName && isValidLastName && isValidAddress && isValidCity && isValidEmail) {
 
@@ -335,8 +335,8 @@ function send(objectToSend) {
 
     .catch(function(err) {
         console.error('Erreur lors de la requête : ', err); // print error message in console
-        const model = document.getElementById('model'); // in div id="model"
-        const error = model.appendChild(document.createElement('div')); // create div error
+        const orderForm = document.getElementById('order-form'); // in div id="model"
+        const error = orderForm.appendChild(document.createElement('div')); // create div error
         error.classList.add('error'); // with class="error" to add css style
         error.innerText = 'Une erreur est survenue lors de la réponse serveur.'; // with error message text
     });
