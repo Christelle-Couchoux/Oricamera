@@ -1,4 +1,5 @@
 // url for selected product
+
 let productUrl = new URL(window.location.href); // get current url
 //console.log(productUrl);
 let id = productUrl.searchParams.get('id'); // get the value (= product id) of the parameter 'id'
@@ -19,8 +20,8 @@ fetch(url)
 
     .then(function(product) { // value of resolved promise is the object 'product'
         //console.log(product); // print object
-        createProduct(product); // call function to display product details
-        listenToAddToCart(product); // call function to listen to click on 'ajouter au panier' button
+        displayProduct(product); // call function to display product details
+        addToCart(product); // call function to listen to click on 'ajouter au panier' button
     })
 
     .catch(function(err) {
@@ -35,9 +36,9 @@ fetch(url)
     });
 
 
-// create product info
+// display product info
 
-function createProduct(product) { // display info from object 'product'
+function displayProduct(product) { // display info from object 'product'
 
     // create and fill in name
     const info = document.getElementById('div-info');
@@ -74,7 +75,7 @@ function createProduct(product) { // display info from object 'product'
 
 // listen to click on 'ajouter au panier' button
 
-function listenToAddToCart(product) { // 'product' in parameter because createOrder needs it
+function addToCart(product) { // 'product' in parameter because createOrder needs it
     const btnAddtocart = document.getElementById('addtocart');
     btnAddtocart.addEventListener('click', function(event){
         event.preventDefault();

@@ -1,12 +1,12 @@
 // create cart table
 
-function createCart() {
+function displayCart() {
     // get stored data from local storage
     let storedOrders = JSON.parse(localStorage.getItem('ordersList'));
     //console.log(storedOrders);
 
     if(storedOrders === null || storedOrders.length === 0) {
-        cartIsEmptyMessage(); // call function to show a 'Votre panier est vide !' message
+        messageCartIsEmpty(); // call function to show a 'Votre panier est vide !' message
     } else {
         let i = 0; // start for dynamic id
         for(let storedOrder of storedOrders) { // for each order in the array
@@ -61,14 +61,14 @@ function createCart() {
             tdTotal.classList.add('td-total', 'align-right');
             tdTotal.innerText = storedOrder.cameraPrice * storedOrder.cameraQuantity + ' €';
         }
-        priceCalculation(storedOrders); // call function to calculate total price
+        calculatePrice(storedOrders); // call function to calculate total price
     }
 };
 
 
 // show 'Votre panier est vide !' message
 
-function cartIsEmptyMessage(){
+function messageCartIsEmpty(){
     const error = document.createElement('div'); // create div error
     error.classList.add('error'); // with class="error" to add css style
     error.innerText = 'Votre panier est vide !'; // with error message text
@@ -80,18 +80,18 @@ function cartIsEmptyMessage(){
 
 
 // calculate total price
-function priceCalculation(storedOrders) {
+function calculatePrice(storedOrders) {
 
     // put all prices in an array
-    let pricesArray = [];
+    let arrayPrices = [];
     for(let storedOrder of storedOrders) { // for each order stored
         let price = storedOrder.cameraPrice * storedOrder.cameraQuantity; // get the price of the product * the quantity
-        pricesArray.push(price); // put it in the array
+        arrayPrices.push(price); // put it in the array
     };
     //console.log(pricesArray);
 
     // add up all the prices
-    const totalPrice = pricesArray.reduce(addUp,0); // function reduce executes function addUp
+    const totalPrice = arrayPrices.reduce(addUp,0); // function reduce executes function addUp
     //console.log(totalPrice);
 
     // fill in total price cell
@@ -234,14 +234,14 @@ function validateOrder() {
     // listen to 'valider ma commande' button
     btnSubmit.addEventListener('click', function(event) {
         event.preventDefault();
-        createContact(); // call function to create object contact
+        createObjectContact(); // call function to create object contact
     })
 }
 
 
 // create object 'contact'
 
-function createContact(contact) {
+function createObjectContact(contact) {
     const firstname = document.getElementById('firstname');
     const lastname = document.getElementById('lastname');
     const address = document.getElementById('address');
@@ -270,10 +270,10 @@ function createContact(contact) {
             }
         }
         // create new instance of class ContactToSend
-        let contact = new ContactToSend(firstname.value, lastname.value, address.value, city.value, email.value);
+        let objectContact = new ContactToSend(firstname.value, lastname.value, address.value, city.value, email.value);
         //console.log(contact);
 
-        createProducts(storedOrders, contact); // call function to create products array
+        createArrayProducts(storedOrders, objectContact); // call function to create products array
     } else {
         alert('Tous les champs du formulaire doivent être remplis et valides.');
     }
@@ -282,27 +282,27 @@ function createContact(contact) {
 
 // create products array
 
-function createProducts(storedOrders, contact) {
+function createArrayProducts(storedOrders, objectContact) {
     storedOrders = JSON.parse(localStorage.getItem('ordersList'));
     //console.log(storedOrders);
 
-    let products = [];
+    let arrayProducts = [];
     for(let storedOrder of storedOrders) {
         let productId = storedOrder.cameraId;
-        products.push(productId);
+        arrayProducts.push(productId);
     }
     //console.log(products);
 
-    createObjectToSend(contact, products); // call function to create object with contact and products
+    createObjectToSend(objectContact, arrayProducts); // call function to create object with contact and products
 }
 
 
 // create object with contact + products array
 
-function createObjectToSend(contact, products) {
+function createObjectToSend(objectContact, arrayProducts) {
     let objectToSend = {
-        contact,
-        products
+        objectContact,
+        arrayProducts
     }
     //console.log(objectToSend);
 
@@ -359,7 +359,7 @@ function storeOrderId(data) {
 // call functions
 
 continueShopping(); // needs to be called first so works even if cart empty
-createCart();
+displayCart();
 emptyCart();
 quantityMinus();
 quantityPlus();

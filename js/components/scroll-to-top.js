@@ -2,9 +2,10 @@
 
 const btnScroll = document.getElementById('scroll-to-top');
 
+
 // show scroll-to-top button
 
-function listenScroll(btnScroll) {
+function showBtnScroll(btnScroll) {
     document.addEventListener('scroll', function(event) {
         if(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
             btnScroll.style.display = 'block'; // show button
@@ -14,9 +15,10 @@ function listenScroll(btnScroll) {
     })
 }
 
+
 // go to top of page
 
-function listenScrollBtn(btnScroll) {
+function scrollToTop(btnScroll) {
     btnScroll.addEventListener('click', function(event) {
         window.scrollTo({
             top: 0,
@@ -28,5 +30,5 @@ function listenScrollBtn(btnScroll) {
 
 // call functions
 
-listenScroll(btnScroll);
-listenScrollBtn(btnScroll);
+showBtnScroll(btnScroll);
+scrollToTop(btnScroll);

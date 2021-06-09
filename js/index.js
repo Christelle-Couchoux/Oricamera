@@ -11,7 +11,7 @@ fetch(url)
 
     .then(function(products) { // value of resolved promise is the array 'products'
         //console.log(products); // print array
-        createList(products); // call function to create products list
+        displayList(products); // call function to create products list
     })
 
     .catch(function(err) {
@@ -23,9 +23,9 @@ fetch(url)
     });
 
 
-// create products list
+// display products list
 
-function createList(products) {
+function displayList(products) {
     for(let product of products) { // for each object in the array products
 
         // create div "item"
@@ -57,7 +57,7 @@ function createList(products) {
         input.setAttribute('type', 'button'); // with attribute type="button"
         input.setAttribute('value', 'Voir ce modèle') // with attribute value="voir ce modèle"
 
-        seeModel(product); // call function to link to product page
+        goToModel(product); // call function to link to product page
     }
 }
 
@@ -67,7 +67,7 @@ function createList(products) {
 
 // go to product page
 
-function seeModel(product) {
+function goToModel(product) {
     let btnSeeModel = document.getElementById('see-model' + product._id);
 
     // create url for product.html page for specific product

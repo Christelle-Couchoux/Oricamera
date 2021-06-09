@@ -9,13 +9,16 @@ function getStoredData() {
     let orderTotal = localStorage.getItem('orderTotal');
     //console.log(orderTotal);
 
-    fillInOrderDetails(orderId, orderTotal); // call function to add retrieved data to page
+    if(orderId && orderTotal) {
+        displayOrderDetails(orderId, orderTotal); // call function to add retrieved data to page
+        clearStorage(); //cal function to empty cart
+    }
 }
 
 
 // fill in order details
 
-function fillInOrderDetails(orderId, orderTotal) {
+function displayOrderDetails(orderId, orderTotal) {
     // id
     const summaryOrderId = document.getElementById('order-id');
     summaryOrderId.innerText = orderId;
@@ -24,9 +27,6 @@ function fillInOrderDetails(orderId, orderTotal) {
     const summaryOrderTotal = document.getElementById('order-total');
     summaryOrderTotal.innerText = orderTotal + ' €';
 }
-
-
-////////////
 
 
 // clear localStorage
@@ -43,4 +43,3 @@ function clearStorage() { // once order is confirmed, clear cart
 // call functions
 
 getStoredData();
-clearStorage();
