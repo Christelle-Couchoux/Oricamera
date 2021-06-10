@@ -241,7 +241,7 @@ function validateOrder() {
 
 // create object 'contact'
 
-function createObjectContact(contact) {
+function createObjectContact() {
     const firstname = document.getElementById('firstname');
     const lastname = document.getElementById('lastname');
     const address = document.getElementById('address');
@@ -270,10 +270,10 @@ function createObjectContact(contact) {
             }
         }
         // create new instance of class ContactToSend
-        let objectContact = new ContactToSend(firstname.value, lastname.value, address.value, city.value, email.value);
+        let contact = new ContactToSend(firstname.value, lastname.value, address.value, city.value, email.value);
         //console.log(contact);
 
-        createArrayProducts(storedOrders, objectContact); // call function to create products array
+        createArrayProducts(storedOrders, contact); // call function to create products array
     } else {
         alert('Tous les champs du formulaire doivent être remplis et valides.');
     }
@@ -282,27 +282,27 @@ function createObjectContact(contact) {
 
 // create products array
 
-function createArrayProducts(storedOrders, objectContact) {
+function createArrayProducts(storedOrders, contact) {
     storedOrders = JSON.parse(localStorage.getItem('ordersList'));
     //console.log(storedOrders);
 
-    let arrayProducts = [];
+    let products = [];
     for(let storedOrder of storedOrders) {
         let productId = storedOrder.cameraId;
-        arrayProducts.push(productId);
+        products.push(productId);
     }
     //console.log(products);
 
-    createObjectToSend(objectContact, arrayProducts); // call function to create object with contact and products
+    createObjectToSend(contact, products); // call function to create object with contact and products
 }
 
 
 // create object with contact + products array
 
-function createObjectToSend(objectContact, arrayProducts) {
+function createObjectToSend(contact, products) {
     let objectToSend = {
-        objectContact,
-        arrayProducts
+        contact,
+        products
     }
     //console.log(objectToSend);
 
