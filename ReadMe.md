@@ -1,6 +1,6 @@
 # Orinoco #
 
-### OpenClassrooms - Web Developper path - Project 5 ###
+### OpenClassrooms - Web Developer path - Project 5 ###
 
 
 #### Aim

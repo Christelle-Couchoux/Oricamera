@@ -11,9 +11,9 @@ function showBtnScroll(btnScroll) {
             btnScroll.style.display = 'block'; // show button
         } else {
             btnScroll.style.display = 'none'; // otherwise hide
-        }
+        };
     })
-}
+};
 
 
 // go to top of page
@@ -25,7 +25,7 @@ function scrollToTop(btnScroll) {
             behavior: 'smooth'
         });
     })
-}
+};
 
 
 // call functions
